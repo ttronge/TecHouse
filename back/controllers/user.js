@@ -27,5 +27,23 @@ const userController = {
             })
             .catch((error) => res.send(error))
     },
+    deleteUser(req, res) {
+        Users.findByIdAndRemove({ _id: req.params.userId })
+
+            .then((x) => {
+                res.send('User eliminado')
+            })
+            .catch((error) => res.send(error))
+    },
+    editUser(req, res) {
+        Users.findByIdAndUpdate({ _id: req.params.userId }, req.body)
+            .then(() => {
+                Users.findOne({ _id: req.params.userId })
+                    .then((updateUser) => {
+                        res.send(updateUser)
+                    })
+                    .catch((error) => res.send(error))
+            })
+    }
 }
 module.exports = userController

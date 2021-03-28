@@ -23,11 +23,32 @@ const propiedadesController = {
     },
     createProperty(req, res) {
         Propiedades.create(req.body)
-        console.log(req.body)
             .then(() => {
                 res.send('Creado')
             })
             .catch((error) => res.send(error))
     },
+    deleteProperty(req, res) {
+        Propiedades.findByIdAndRemove({ _id: req.params.propiedadId })
+            .then((x) => {
+                res.send('eliminado')
+            })
+            .catch((error) => res.send(error))
+    },
+    editProperty(req, res) {
+        Propiedades.findByIdAndUpdate({ _id: req.params.propiedadId }, req.body)
+            .then(() => {
+                Propiedades.findOne({ _id: req.params.propiedadId })
+                    .then((x) => {
+                        res.send(x)
+                    })
+                    .catch((error) => res.send(error))
+            })
+
+    }
+
 }
+
+
+
 module.exports = propiedadesController

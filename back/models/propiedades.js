@@ -25,6 +25,10 @@ const propiedadesSchema = new Schema({
     available: {
         type: Boolean,
         required: true,
+    },
+    propietaro: {
+        type: Schema.Types.ObjectId,
+        ref: "user"
     }
 })
 const Propiedades = mongoose.model('propiedades', propiedadesSchema)
