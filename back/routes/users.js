@@ -1,15 +1,31 @@
 const express = require('express')
 const router = express.Router()
 const userController = require('../controllers/user')
-const Users = require('../models/users')
-const Propiedades = require('../models/propiedades')
-const db = require('../config/index')
+const auth = require('../middleware/auth')
 
 router.get('/:userId', userController.findAnUser)
 router.get('/', userController.findAll)
-router.post('/register', userController.createUser)
-router.delete('/:userId', userController.deleteUser)
-router.put('/:userId', userController.editUser)
+router.delete('/:userId', auth.isAuth, userController.deleteUser)
+router.put('/:userId', auth.isAuth, userController.editUser)
+
+
+
+
+
+
+
+
+
+
+
+
+/* router.get('mispropiedades/:userId', (req, res) => {
+  Users.findOne({ _id: req.params.userId }, function (err, user) {
+    Propiedades.populate(user, { path: "user" }, function (err, propiedades) {
+      console.log(propiedades)
+      res.status(200).send(propiedades)
+    });
+  }) */
 //asignar propiedades a users
 
 /* 
@@ -33,7 +49,7 @@ app.post("/product/:id", function(req, res) {
     });
 });
 Lastly, here’s our route to create get a single Product, the related Review including all the Review fields. Here we use the populate() function to populate the review field of the Product with all the Review fields.
-
+ 
 // Route for retrieving a Product by id and populating it's Review.
 app.get("/products/:id", function(req, res) {
   // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...

@@ -16,8 +16,9 @@ app.use('/api', routes)
 app.use((error, req, res, next) => {
     res.sendStatus(404).send(error)
 })
-/* User.deleteMany() 
-    .then((x) => { ASI HAGO UN FORCE TRUE
+/* User.deleteMany()
+    .then((x) => {
+        //ASI HAGO UN FORCE TRUE
         console.log(x)
     })
  */
@@ -25,8 +26,7 @@ app.use((error, req, res, next) => {
     .then((x) => {
         /// ASI HAGO UN FORCE TRUE
         console.log(x)
-    })
-    */
+    })*/
 app.listen(3009, () => {
     console.log('run in port 3009');
 })

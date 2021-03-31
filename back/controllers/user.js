@@ -1,5 +1,5 @@
-const { Users } = require('../models/index')
-
+const { Users, Propiedades } = require('../models/index')
+const mongoose = require('mongoose')
 const userController = {
     findAll(req, res) {
         Users.find({})
@@ -26,6 +26,7 @@ const userController = {
                 res.send('user created')
             })
             .catch((error) => res.send(error))
+
     },
     deleteUser(req, res) {
         Users.findByIdAndRemove({ _id: req.params.userId })
@@ -44,6 +45,7 @@ const userController = {
                     })
                     .catch((error) => res.send(error))
             })
-    }
+    },
+
 }
 module.exports = userController

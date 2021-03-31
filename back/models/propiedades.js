@@ -26,7 +26,7 @@ const propiedadesSchema = new Schema({
         type: Boolean,
         required: true,
     },
-    propietaro: {
+    propietario: {
         type: Schema.Types.ObjectId,
         ref: "user"
     }

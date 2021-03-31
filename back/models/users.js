@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose;
 const { isEmail } = require('validator')
 const bcrypt = require('bcrypt')
-const jtw = require('jsonwebtoken')
 const userSchema = new Schema({
     name: {
         type: String,
