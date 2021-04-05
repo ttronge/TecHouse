@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    font-family: 'Martel', serif;
+}
+.body{
+    background-color: #f2f2f2;
+}
+nav{
+  background-color: #171c24;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  padding: 0 100px;
+}
+nav .logo{
+    color: #fff;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: -1px;
+}
+.link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400; 
+}
+.link:hover {
+    color: #ff3d00;
+}
+nav .navitems{
+    display: flex;
+    flex: 1;
+    list-style: none;
+    padding: 0 0 0 40px;
+}
+nav .navitems li {
+    padding: 0 15px;
+}
+nav form {
+    display: flex;
+    height: 40px;
+    border-radius: 2px;
+    padding: 2px;
+    background: #1e232b;
+    min-width: 18%;
+    border: 1px solid rgba(155px, 155px, 155px, 0.2);
+}
+nav form .buscador {
+    height: 100%;
+    width: 100%;
+    padding: 0 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 17px;
+}
+nav form  button {
+    padding: 0 15px;
+    background: #ff3d00;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+}
+nav .menuIcon,
+nav .searchIcon,
+nav .cancelIcon{
+    width: 40px;
+    color: #fff;
+    text-align: center;
+    margin: 0 50px;
+    cursor: pointer;
+    display: none;
+}
+nav .menuIcon span,
+nav .searchIcon,
+nav .cancelIcon{
+    display: none;
+}
+@media (max-width:1140px){
+    nav{
+     padding: 0;   
+    }
+    nav .logo{
+        flex: 2;
+        text-align: center;
+    }
+    nav .navitems{
+        position: fixed;
+        z-index: 99;
+        top: 70px;
+        width: 100%;
+        left: -100%;
+        height: 100%;
+        background-color: #14141f;
+        display: inline-block;
+        padding: 10px 50px 0 50px;
+        text-align: center;
+    }
+    nav .navitems li {
+        line-height: 40px;
+        margin: 30px 0 ;
+    }
+    nav .navitems li  .link{
+        font-size: 20px;
+    }
+    nav form {
+       position: absolute;
+       top: 95px;
+       right: 50px;
+    }
+    nav .menuIcon{
+        display: block;
+    }
+    nav form:before{
+        position:absolute;
+        content: '';
+        top: -13px;
+        right: 0;
+        width: 0;
+        width: 0;
+        z-index: -1;
+        margin: -20px 0 0;
+        border: 10px solid transparent ;
+        border-bottom-color:#1e232b ;
+
+    }
+    nav .searchIcon,
+    nav form:after{
+        position: absolute;
+        content: '';
+        height: 60px;
+        width: calc(100% + 20px);
+        padding: 2px;
+        background-color: #1e232b;
+        border-radius: 2px;
+        z-index: -2;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+    }
+    nav .menuIcon span{
+        display: block;
+    }
+}

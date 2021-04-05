@@ -24,13 +24,15 @@ const userSchema = new Schema({
         minlength: [6, 'minimo 6 caracteres debe tener la contraseña'] // por si da error es esto 
 
     },
-    admin: {
-        type: Boolean
-    },
-    propiedades: [{
-        type: Schema.Types.ObjectId,
-        ref: 'propiedades'
-    }]
+    /*    admin: {
+           type: Boolean,
+           required: false,
+   
+       } */
+    /*   propiedades: [{
+          type: Schema.Types.ObjectId,
+          ref: 'propiedades'
+      }] */
 })
 userSchema.pre('save', async function (next) {
     const salt = await bcrypt.genSalt(16)

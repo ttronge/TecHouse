@@ -5,7 +5,7 @@ const propiedadesSchema = new Schema({
         type: String,
         required: true
     },
-    name: {
+    direccion: {
         type: String,
         required: true,
     },
@@ -22,6 +22,10 @@ const propiedadesSchema = new Schema({
         type: String,
         required: true,
     },
+    ubicacion: {
+        type: String,
+        required: true
+    },
     available: {
         type: Boolean,
         required: true,
@@ -29,7 +33,8 @@ const propiedadesSchema = new Schema({
     propietario: {
         type: Schema.Types.ObjectId,
         ref: "user"
-    }
+    },
+
 })
 const Propiedades = mongoose.model('propiedades', propiedadesSchema)
 

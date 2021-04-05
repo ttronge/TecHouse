@@ -1,6 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const cookieParser = require('cookie-parser')
+const cors = require('cors')
 const routes = require('./routes/index')
 const db = require('./config/index')
 const User = require('./models/users')
@@ -8,6 +9,7 @@ const Propiedades = require('./models/propiedades')
 const app = express()
 
 app.use(morgan('dev'))
+app.use(cors())
 app.use(express.json())
 app.use(cookieParser())
 
