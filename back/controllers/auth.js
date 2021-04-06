@@ -7,13 +7,19 @@ const userControllers = require('./user')
 
 const authController = {
     singUp(req, res) {       //registro
+
         User.create(req.body)
+
             .then((user) => {
                 user.save(() => {
                     res.status(200).send({ token: service.createToken(user) })
                 })
             })
-            .catch((error) => res.status(500).send(`error al crear user${error}`))
+
+            .catch(() => res.status(500).send({
+                message: `error al crear user`
+            }))
+
 
     },
     singIn(req, res) {

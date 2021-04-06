@@ -10,7 +10,8 @@ const userSchema = new Schema({
     },
     lastname: {
         type: String,
-        required: true
+        required: true,
+        minlength: 3
     },
     email: {
         type: String,
@@ -21,14 +22,13 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true,
-        minlength: [6, 'minimo 6 caracteres debe tener la contraseña'] // por si da error es esto 
-
+        minlength: 6,
     },
-    /*    admin: {
-           type: Boolean,
-           required: false,
-   
-       } */
+    admin: {
+        type: Boolean,
+        required: false,
+        default: false
+    }
     /*   propiedades: [{
           type: Schema.Types.ObjectId,
           ref: 'propiedades'

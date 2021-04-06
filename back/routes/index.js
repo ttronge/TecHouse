@@ -17,7 +17,7 @@ router.use('/propiedades', propiedades)
 router.use('/categoria', categoria)
 router.use('/users', users)
 router.use('/singin', singin)
-router.use('/singup', singup) // este registra
+router.use('/singup', singup)
 router.use('/private', private)
 
 
@@ -44,6 +44,10 @@ router.post('/singin', userControl.singIn) */
 //propiedad  6061ebabc6b92a3ce05cb361
 
 // ------------------------- edita propiedades y pone a un user la propiedad ------------------
+
+
+
+
 /* router.post('/tomi/:id', (req, res) => {
     Propiedad.findById(req.params.id)
         .then((propiedadEcontrada) => {

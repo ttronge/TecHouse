@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-//--------------------------------REGISTER AND SING IN 
+
 const auth = require('../middleware/auth')
 
 
