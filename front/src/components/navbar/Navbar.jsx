@@ -23,7 +23,7 @@ const Navbar = () => {
                             <Link to='/' className={NavbarCss.link}>Alquilar</Link>
                         </li>
                         <li>
-                            <Link to='/prueba' className={NavbarCss.link}>Sing in</Link>
+                            <Link to='/registro' className={NavbarCss.link}>Sing in</Link>
 
                         </li>
                         <li>
