@@ -53,7 +53,7 @@ input::placeholder {
   color: #999;
 }
 
-input.error {
+.error {
   border: 1px solid red;
 }
 
@@ -119,4 +119,12 @@ input.error {
 .createAccount small {
   color: #999;
   font-weight: lighter;
+}
+.disabled {
+  background: grey;
+}
+
+.pError {
+  color: red;
+  padding: 5px;
 }

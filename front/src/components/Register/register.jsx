@@ -13,6 +13,25 @@ function validateEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
+/*
+const successAlert=(text='hola')=>{
+    Swal.fire({
+        title: 'Success!',
+        text: text,
+        icon: 'success',
+        confirmButtonText: 'Ok'
+    });
+}
+
+const errorAlert=(text='')=>{
+    Swal.fire({
+        title: 'Error!',
+        text: text,
+        icon: 'error',
+        confirmButtonText: 'Ok'
+    });
+}
+*/
 class Register extends React.Component {
     constructor(props) {
         super(props)
@@ -24,11 +43,11 @@ class Register extends React.Component {
             redirect: false,
             loading: false,
             erores: "",
-            habilitado: false
+            habilitado: true,
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
-        this.habilitado = this.habilitado.bind(this)
+        this.habilitadoo = this.habilitadoo.bind(this)
     }
 
     componentDidMount() {
@@ -39,15 +58,24 @@ class Register extends React.Component {
 
 
 
-    handleChange = (e) => {
+    handleChange(e) {
         this.setState({ [e.target.name]: e.target.value })
-        console.log(this.state.lastName);
+        this.habilitadoo()
+
+    }
+
+    habilitadoo() {
+        const { name, lastname, email, password, loading, erores, habilitado } = this.state
+        if (!name || !lastname || !email || !password) {
+            return this.setState({ habilitado: false })
+        }
     }
 
 
     handleSubmit = (e) => {
         const { name, lastname, email, password, loading, erores, } = this.state
         e.preventDefault();
+        this.habilitadoo()
         this.setState({ loading: true })
         axios.post('http://localhost:3009/api/singup/', { name, lastname, email, password })
             //  .then(response => {
@@ -65,24 +93,10 @@ class Register extends React.Component {
                 this.setState({ erores: err.response.data.message })
                 this.setState({ loading: false })
                 console.log(err)
+
             })
     }
-    // si yo tengo el name, lastname , email y password  con un length > 0 la funcion tiene que dar false si no true
 
-
-    handleChange = (e) => {
-        e.preventDefault()
-        this.setState({ [e.target.name]: e.target.value })
-
-    }
-
-    habilitado() {
-        const { name, lastname, email, password, loading, erores, } = this.state
-        if ((!name && !lastname) && (!email && password)) {
-            console.log('funciono rey')
-            return this.setState({ habilitado: true })
-        }
-    }
     render() {
 
         const { redirect } = this.state;
@@ -90,7 +104,7 @@ class Register extends React.Component {
             return <Home to='/' />;
         }
 
-        const { name, lastname, email, password, erores } = this.state
+        const { name, lastname, email, password, erores, habilitado } = this.state
 
         return (
             <div className={style.wrapper} >
@@ -112,7 +126,8 @@ class Register extends React.Component {
                         <div className={style.lastName}>
                             <label htmlFor="lastName">Last Name</label>
                             <input type="text"
-                                name='lastname' onChange={this.handleChange}
+                                name='lastname'
+                                onChange={this.handleChange}
                                 value={this.state.lastname}
                             />
                             {(lastname.length < 3 && lastname.length > 0) && (
@@ -126,7 +141,6 @@ class Register extends React.Component {
                                 name='email'
                                 onChange={this.handleChange}
                                 value={this.state.email}
-
                             />
                             {(!validateEmail(email) && email.length > 0) && (
                                 <span className={style.errorMessage}>el email es incorretcto rey</span>
@@ -144,19 +158,13 @@ class Register extends React.Component {
                             )}
                         </div>
                         <div className={style.createAccount}>
-                            {/* 
-                              en el estado creo una variable con true default 
-                              update aca checkeo 
-                             
-                            
-                            */}
-                            <button type="submit" disabled={this.habilitado} >Create Account</button>
+                            <button type="submit" disabled={habilitado} className={habilitado ? "disabled" : "habilitado"} >Create Account</button>
                             {
                                 this.state.loading ? <CircularProgress /> : null
                             }
 
                             {
-                                <p>  {erores} </p>
+                                <p className={style.pError}>  {erores} </p>
                             }
 
                             <small>Already Have an Account?</small>

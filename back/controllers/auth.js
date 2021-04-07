@@ -6,7 +6,9 @@ const service = require('../services')
 const userControllers = require('./user')
 
 const authController = {
-    singUp(req, res) {       //registro
+    singUp(req, res) {
+
+        //registro
         if ((req.body.name).length < 3) {
             return res.status(500).send({
                 message: `nombre minmo debe tener 3 caractere`
@@ -22,7 +24,7 @@ const authController = {
                 message: `error al enviar email`
             })
         }
-        if (!((req.body.password).length < 6)) {
+        if (((req.body.password).length < 6)) {
             return res.status(500).send({
                 message: `error al crear user`
             })
