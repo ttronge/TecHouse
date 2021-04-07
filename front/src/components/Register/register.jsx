@@ -23,10 +23,12 @@ class Register extends React.Component {
             password: '',
             redirect: false,
             loading: false,
-            erores: ""
+            erores: "",
+            habilitado: false
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.habilitado = this.habilitado.bind(this)
     }
 
     componentDidMount() {
@@ -34,6 +36,8 @@ class Register extends React.Component {
             .then(res => res.data)
             .then((x) => console.log(x))
     }
+
+
 
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value })
@@ -57,11 +61,14 @@ class Register extends React.Component {
             })
 
             .catch((err) => {
+
                 this.setState({ erores: err.response.data.message })
                 this.setState({ loading: false })
+                console.log(err)
             })
-
     }
+    // si yo tengo el name, lastname , email y password  con un length > 0 la funcion tiene que dar false si no true
+
 
     handleChange = (e) => {
         e.preventDefault()
@@ -69,9 +76,15 @@ class Register extends React.Component {
 
     }
 
-
+    habilitado() {
+        const { name, lastname, email, password, loading, erores, } = this.state
+        if ((!name && !lastname) && (!email && password)) {
+            console.log('funciono rey')
+            return this.setState({ habilitado: true })
+        }
+    }
     render() {
-        console.log(this.state);
+
         const { redirect } = this.state;
         if (redirect) {
             return <Home to='/' />;
@@ -137,14 +150,14 @@ class Register extends React.Component {
                              
                             
                             */}
-                            <button type="submit">Create Account</button>
+                            <button type="submit" disabled={this.habilitado} >Create Account</button>
                             {
                                 this.state.loading ? <CircularProgress /> : null
                             }
 
-                            <h1>{
-                                erores
-                            }  </h1>
+                            {
+                                <p>  {erores} </p>
+                            }
 
                             <small>Already Have an Account?</small>
                         </div>
