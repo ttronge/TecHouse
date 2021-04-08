@@ -3,6 +3,7 @@ import NavbarCss from './navbar.module.css'
 import { Link } from 'react-router-dom'
 import Register from '../Register/register'
 //import logo from '../../assets/logo'
+
 const Navbar = () => {
     const menuicon = document.getElementsByClassName('.menuIcon')
     console.log(menuicon);
@@ -23,11 +24,11 @@ const Navbar = () => {
                             <Link to='/' className={NavbarCss.link}>Alquilar</Link>
                         </li>
                         <li>
-                            <Link to='/registro' className={NavbarCss.link}>Sing in</Link>
+                            <Link to='/registro' className={NavbarCss.link}>Registrarse</Link>
 
                         </li>
                         <li>
-                            <Link to='/' className={NavbarCss.link}>algo</Link>
+                            <Link to='/singin' className={NavbarCss.link}>Login</Link>
                         </li>
 
                     </div>

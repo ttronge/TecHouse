@@ -3,6 +3,7 @@ import { Switch, Route, BrowserRouter } from "react-router-dom";
 import { Provider } from 'react-redux'
 import Home from './components/Home'
 import register from './components/Register/register'
+import Singin from './components/singin/Singin'
 import store from './store';
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
 
             <Route exact path="/" component={Home} />
             <Route exact path="/registro" component={register} />
+            <Route exact path='/singin' component={Singin} />
           </Switch>
         </BrowserRouter>
       </Provider>

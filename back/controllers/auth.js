@@ -10,11 +10,6 @@ const { SECRET_TOKEN } = require('../config')
 const authController = {
     async singUp(req, res) {
 
-        //registro
-
-
-        const salt = await bcrypt.genSalt(10)
-        const hasheoPassword = await bcrypt.hash(req.body.password, salt)
         if ((req.body.name).length < 3) {
             return res.status(500).send({
                 message: `nombre minmo debe tener 3 caractere`
@@ -35,6 +30,10 @@ const authController = {
                 message: `error al crear user`
             })
         }
+
+        const salt = await bcrypt.genSalt(10)
+        const hasheoPassword = await bcrypt.hash(req.body.password, salt)
+
         const user = new User({
             name: req.body.name,
             lastname: req.body.lastname,
