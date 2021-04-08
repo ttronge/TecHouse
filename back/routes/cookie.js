@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const authController = require('../controllers/auth')
 
-router.post('/', authController.singUp)
+router.get('/', authController.cookie)
 
 
 module.exports = router

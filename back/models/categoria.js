@@ -4,6 +4,9 @@ const categoriasSchema = new Schema({
     tipo: {
         type: String
     },
+    zona: {
+        type: String
+    }
 })
 const Categories = mongoose.model('categories', categoriasSchema)
 

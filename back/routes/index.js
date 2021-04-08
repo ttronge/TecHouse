@@ -7,8 +7,8 @@ const propiedades = require('./propiedades')
 const singin = require('./singIn')
 const singup = require('./singup')
 const private = require('./private')
-
-
+const cookie = require('./cookie')
+const logout = require('./logout')
 
 
 
@@ -16,9 +16,12 @@ const private = require('./private')
 router.use('/propiedades', propiedades)
 router.use('/categoria', categoria)
 router.use('/users', users)
-router.use('/singin', singin)
-router.use('/singup', singup)
+router.use('/singin', singin) // logueo
+router.use('/singup', singup) // registro 
 router.use('/private', private)
+router.use('/cookie', cookie)
+router.use('/logout', logout)
+//router.use('/registro', MejorandoRegisterR)
 
 
 

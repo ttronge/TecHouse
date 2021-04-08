@@ -34,14 +34,6 @@ const userSchema = new Schema({
           ref: 'propiedades'
       }] */
 })
-userSchema.pre('save', async function (next) {
-    const salt = await bcrypt.genSalt(16)
-    this.password = await bcrypt.hash(this.password, salt)
-    next()
-})
-
-
-
 
 const User = mongoose.model('user', userSchema)
 

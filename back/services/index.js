@@ -9,7 +9,7 @@ function createToken(user) {
         sub: user._id,
         iat: moment().unix(),
         exp: moment().add(120, 'minutes').unix(),
-        admin: user.admin // if there is an error this is 
+        // admin: user.admin // if there is an error this is 
 
     }
     // console.log(payload.admin);
