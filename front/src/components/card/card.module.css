@@ -1,0 +1,13 @@
+.fondo{
+    background-color:mediumaquamarine;
+    height: 100%;
+    width: 100%;
+
+}
+.container {
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px
+}

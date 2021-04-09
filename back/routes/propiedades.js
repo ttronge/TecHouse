@@ -6,9 +6,9 @@ const userControl = require('../controllers/auth')
 
 router.get('/:propiedadId', propiedadesController.findAnProperties)
 router.get('/', propiedadesController.findAll)
-router.post('/', auth.isAuth, propiedadesController.createProperty)
-router.delete('/:propiedadId', auth.isAuth, propiedadesController.deleteProperty)
-router.put('/:propiedadId', auth.isAuth, propiedadesController.editProperty)
+router.post('/', propiedadesController.createProperty)
+router.delete('/:propiedadId', propiedadesController.deleteProperty)
+router.put('/:propiedadId', propiedadesController.editProperty)
 
 
 

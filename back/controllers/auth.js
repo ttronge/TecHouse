@@ -56,8 +56,8 @@ const authController = {
                 message: "usuario no encontrado"
             })
         }
-        const a = await bcrypt.compare(req.body.password, user.password)
-        if (!await bcrypt.compare(req.body.password, user.password)) {
+        const match = await bcrypt.compare(req.body.password, user.password)
+        if (!match) {
 
             return res.status(400).send({
                 message: "credenciales invalidas"
@@ -89,25 +89,36 @@ const authController = {
                 })
             }
             const user = await User.findOne({ _id: verification._id })
+
+
             const { password, ...data } = await user.toJSON()
+
+
+
             res.send(data)
 
         } catch (e) {
-            return res.status(401).send({
-                message: "rey hay problemas"
+            res.status(401).send({
+                message: "hay un error"
 
 
             })
         }
     }
     ,
-    logout(req, res) {
-        res.cookie('jwt', "", { maxAge: 0 })
+    async logout(req, res) {
+        try {
+            res.clearCookie('jwt', { domain: "http://localhost:3000/", path: "/" })
+            console.log(req.cookies['jwt']);
 
-        res.send({
-            mesagge: "success"
-        })
+        }
+        catch {
+            res.send({
+                message: "Error"
+            })
+        }
     }
+
 
 
 }

@@ -30,10 +30,10 @@ const propiedadesSchema = new Schema({
         type: Boolean,
         required: true,
     },
-    propietario: {
-        type: Schema.Types.ObjectId,
-        ref: "user"
-    },
+    /*    propietario: {
+           type: Schema.Types.ObjectId,
+           ref: "user"
+       }, */
 
 })
 const Propiedades = mongoose.model('propiedades', propiedadesSchema)

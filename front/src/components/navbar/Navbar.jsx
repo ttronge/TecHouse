@@ -2,11 +2,24 @@ import React from 'react';
 import NavbarCss from './navbar.module.css'
 import { Link } from 'react-router-dom'
 import Register from '../Register/register'
+import axios from 'axios'
 //import logo from '../../assets/logo'
 
 const Navbar = () => {
-    const menuicon = document.getElementsByClassName('.menuIcon')
-    console.log(menuicon);
+
+    const cerrarSesion = () => {
+        axios.post('http://localhost:3009/api/logout',
+            { withCredentials: true })
+            .then((x) => {
+                document.cookie = "jwt = '' "
+
+            })
+            .catch((err) => console.log(err))
+    }
+
+
+
+
     return (
 
         < div >
@@ -29,6 +42,9 @@ const Navbar = () => {
                         </li>
                         <li>
                             <Link to='/singin' className={NavbarCss.link}>Login</Link>
+                        </li>
+                        <li>
+                            <Link to='/' className={NavbarCss.link} onClick={cerrarSesion}>cerrar sesion</Link>
                         </li>
 
                     </div>

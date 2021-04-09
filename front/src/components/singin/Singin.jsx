@@ -14,7 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from 'axios'
-
+import { Redirect } from 'react-router-dom'
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
@@ -51,12 +51,18 @@ const estilo = makeStyles((theme) => ({
 const SignIn = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [redirect, setRedirect] = useState(false)
     const classes = estilo();
 
     const handleSubmit = (e) => {
         e.preventDefault()
         axios.post('http://localhost:3009/api/singin', { email: email, password: password },
             { withCredentials: true })
+            .then(() => {
+                setRedirect(true)
+            })
+            .catch((err) => console.log(err))
+
     }
 
     const handleChangeEmail = (e) => {
@@ -64,8 +70,13 @@ const SignIn = () => {
     }
     const handleChangePassword = (e) => {
         setPassword(e.target.value)
+
+    }
+    if (redirect) {
+        return <Redirect to='/' />;
     }
     return (
+
 
         <Container component="main" maxWidth="xs" >
             <CssBaseline />
@@ -111,6 +122,7 @@ const SignIn = () => {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
+
                     >
                         Enviar
           </Button>

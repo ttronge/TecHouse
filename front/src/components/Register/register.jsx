@@ -101,7 +101,7 @@ class Register extends React.Component {
 
         const { redirect } = this.state;
         if (redirect) {
-            return <Home to='/' />;
+            return <Redirect to='/singin' />
         }
 
         const { name, lastname, email, password, erores, habilitado } = this.state
@@ -111,7 +111,9 @@ class Register extends React.Component {
                 <h1>Completa con tus datos </h1>
                 <br />
                 <div className={style.formWrapper}>
-                    <form onSubmit={this.handleSubmit} className={style.formregister}>
+                    <form onSubmit={this.handleSubmit}
+                        className={style.formregister}
+                    >
                         <div className={style.firstName}>
                             <label htmlFor="firstName">First Name</label>
                             <input type="text"
@@ -158,14 +160,15 @@ class Register extends React.Component {
                             )}
                         </div>
                         <div className={style.createAccount}>
-                            <button type="submit" disabled={habilitado} className={habilitado ? "disabled" : "habilitado"} >Create Account</button>
-                            {
-                                this.state.loading ? <CircularProgress /> : null
-                            }
+                            <button type="submit"
+                                disabled={habilitado}
+                                className={habilitado ? "disabled" : "habilitado"}
+                            >
+                                Create Account
+                            </button>
+                            {this.state.loading ? <CircularProgress /> : null}
 
-                            {
-                                <p className={style.pError}>  {erores} </p>
-                            }
+                            {<p className={style.pError}>  {erores} </p>}
 
                             <small>Already Have an Account?</small>
                         </div>
