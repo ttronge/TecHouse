@@ -13,25 +13,6 @@ function validateEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
-/*
-const successAlert=(text='hola')=>{
-    Swal.fire({
-        title: 'Success!',
-        text: text,
-        icon: 'success',
-        confirmButtonText: 'Ok'
-    });
-}
-
-const errorAlert=(text='')=>{
-    Swal.fire({
-        title: 'Error!',
-        text: text,
-        icon: 'error',
-        confirmButtonText: 'Ok'
-    });
-}
-*/
 class Register extends React.Component {
     constructor(props) {
         super(props)
@@ -48,12 +29,6 @@ class Register extends React.Component {
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.habilitadoo = this.habilitadoo.bind(this)
-    }
-
-    componentDidMount() {
-        axios.get('http://localhost:3009/api/propiedades')
-            .then(res => res.data)
-            .then((x) => console.log(x))
     }
 
 

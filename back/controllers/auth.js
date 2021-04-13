@@ -94,7 +94,6 @@ const authController = {
             const { password, ...data } = await user.toJSON()
 
 
-
             res.send(data)
 
         } catch (e) {
@@ -108,8 +107,6 @@ const authController = {
     ,
     async logout(req, res) {
         try {
-            res.clearCookie('jwt', { domain: "http://localhost:3000/", path: "/" })
-            console.log(req.cookies['jwt']);
 
         }
         catch {
@@ -117,6 +114,7 @@ const authController = {
                 message: "Error"
             })
         }
+        res.send('; ')
     }
 
 

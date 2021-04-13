@@ -28,11 +28,11 @@ const userSchema = new Schema({
         type: Boolean,
         required: false,
         default: false
-    }
-    /*   propiedades: [{
-          type: Schema.Types.ObjectId,
-          ref: 'propiedades'
-      }] */
+    },
+    propiedades: [{
+        type: Schema.Types.ObjectId,
+        ref: 'propiedades'
+    }]
 })
 
 const User = mongoose.model('user', userSchema)

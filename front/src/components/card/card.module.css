@@ -1,13 +1,19 @@
-.fondo{
-    background-color:mediumaquamarine;
-    height: 100%;
-    width: 100%;
 
-}
 .container {
-   
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px
+    margin-top: 77px;
+    margin-left: 102px;
+    display: grid;
+    grid-template-columns:  33% 33% 33%;
+    grid-gap: 25px;
+    grid-template-rows: 33% 33% 33%;
+}
+h1 {
+    margin-top: 36px;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    font-weight: 400; 
 }
