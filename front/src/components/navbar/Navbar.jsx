@@ -11,7 +11,7 @@ const Navbar = () => {
         axios.post('http://localhost:3009/api/logout',
             { withCredentials: true })
             .then((x) => {
-                document.cookie = "jwt = '' "
+                console.log(x)
 
             })
             .catch((err) => console.log(err))
@@ -28,7 +28,7 @@ const Navbar = () => {
 
                 <nav>
                     <div className={NavbarCss.menuIcon} ><span className="fas fa-bars" ></span></div>
-                    <div className={NavbarCss.logo}>logo</div>
+                    <div ><img className={NavbarCss.imagenIcono} src="https://images.vexels.com/media/users/3/127772/isolated/preview/ce0eaed4069f2b190e580759fcc98662-icono-de-bienes-ra-iacute-ces-casa-delantera-by-vexels.png" alt="" /></div>
                     <div className={NavbarCss.navitems}>
                         <li>
                             <Link to='/' className={NavbarCss.link}>Comprar</Link>

@@ -45,7 +45,10 @@ const propiedadesController = {
                     .catch((error) => res.send(error))
             })
 
-    }
+    },
+    /*  addImage(req,res){
+         Propiedades.
+     } */
 
 }
 

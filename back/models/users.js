@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose;
 const { isEmail } = require('validator')
-const bcrypt = require('bcrypt')
 const userSchema = new Schema({
     name: {
         type: String,
@@ -29,7 +28,7 @@ const userSchema = new Schema({
         required: false,
         default: false
     },
-    propiedades: [{
+    favoritos: [{
         type: Schema.Types.ObjectId,
         ref: 'propiedades'
     }]

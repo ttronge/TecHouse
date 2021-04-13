@@ -1,5 +1,6 @@
 const { Users, Propiedades } = require('../models/index')
 const mongoose = require('mongoose')
+const User = require('../models/users')
 const userController = {
     findAll(req, res) {
         Users.find({})
@@ -46,6 +47,21 @@ const userController = {
                     .catch((error) => res.send(error))
             })
     },
+    addFavorite(req, res) {
+        User.findById(req.params.userId)
+            .then((user) => {
+                user.favoritos.push(req.body.propiedadId)
+                return user.save()
+            })
+            .then((usuarioModificado) => {
+                usuarioModificado.populate('favoritos').execPopulate()
+                    .then((usuarioConPopulated) => {
+                        res.send(usuarioConPopulated.favoritos)
+                    })
+            })
+
+    }
+
 
 }
 module.exports = userController

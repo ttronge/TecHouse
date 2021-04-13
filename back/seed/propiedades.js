@@ -33,10 +33,7 @@ const departamento3 = {
     ubicacion: "montes de oca",
     available: true
 };
-/**
- (node:21107) UnhandledPromiseRejectionWarning: ValidationError: propiedades validation failed: price: Cast to Number failed for value "Normal" at path "price", ubicacion: Path `ubicacion` is required., direccion: Path `direccion` is required.
 
- */
 const departamento4 = {
     livingPlace: "departamento",
     direccion: "3 de febrero 2200",

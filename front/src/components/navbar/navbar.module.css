@@ -29,6 +29,14 @@ nav .logo{
     font-size: 18px;
     font-weight: 400; 
 }
+div .imagenIcono {
+        width: 83px;
+        height: 73px;
+        margin-left: 0px;
+        margin-bottom: 0px;
+    
+    
+}
 .link:hover {
     color: #ff3d00;
 }

@@ -20,6 +20,8 @@ import axios from 'axios'
 
 export default function Carta() {
     const [propiedades, setPropiedades] = useState([])
+    const [user, setUsers] = useState([])
+    const [favs, setFavs] = useState([])
     const classes = useStyles();
     useEffect(() => {
         axios.get("http://localhost:3009/api/propiedades")
@@ -27,7 +29,16 @@ export default function Carta() {
                 setPropiedades(x.data)
             })
     }, [])
-
+    useEffect(() => {
+        axios.get('http://localhost:3009/api/cookie')
+            .then((x) => {
+                setUsers(x)
+            })
+    }, [])
+    console.log(user);
+    /*   useEffect(() => {
+          axios.post("http://localhost:3009/api/users/favorite/")
+      }) */
     return (
         <div>
             <h1>Propiedades destacadas</h1>
@@ -69,6 +80,9 @@ export default function Carta() {
 
                                             <Link to={`/propiedad/${propiedad._id}`} className={estilo.link}> Ver mas</Link>
 
+                                        </Button>
+                                        <Button >
+                                            ❤️
                                         </Button>
                                     </Card>
                                 </div>
