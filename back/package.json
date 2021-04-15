@@ -25,7 +25,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "propiedades-seed": "node seed/propiedades.js"
+    "propiedades-seed": "node seed/propiedades.js",
+    "users-seed": "node seed/users.js"
   },
   "keywords": [],
   "author": "",

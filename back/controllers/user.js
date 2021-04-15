@@ -58,6 +58,7 @@ const userController = {
                     .then((usuarioConPopulated) => {
                         //res.send(usuarioConPopulated.favoritos)
                         res.send({
+                            depto: usuarioConPopulated,
                             message: 'se ha añadido correctamente'
                         })
                     })

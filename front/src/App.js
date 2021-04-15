@@ -4,7 +4,7 @@ import Home from './components/Home'
 import register from './components/Register/register'
 import Singin from './components/singin/Singin'
 import SingleProperty from './components/singleProperty/singleProperty'
-
+import favoritos from './components/favoritos/fav'
 
 function App() {
   const [name, setName] = useState("")
@@ -16,7 +16,7 @@ function App() {
         try {
           const local = localStorage.getItem('user')
           const dataFinal = JSON.parse(local)
-          console.log(dataFinal);
+          //          console.log(dataFinal);
 
           setName(dataFinal.name)
         }
@@ -45,6 +45,7 @@ function App() {
           <Route exact path="/" component={() => <Home name={name} />} />
           <Route exact path="/registro" component={register} />
           <Route exact path='/singin' component={Singin} />
+          <Route exact path='/favoritos' component={favoritos} />
           <Route exact path="/propiedad/:id" render={({ match }) => <SingleProperty propiedad={match.params.id} />} />
 
         </Switch>

@@ -3,31 +3,46 @@ import axios from 'axios'
 import Navbar from '../navbar/Navbar'
 import estilos from './singleProperty.module.css'
 import Button from '@material-ui/core/Button';
+
+
 const SingleProperty = ({ propiedad }) => {
-    console.log(propiedad);
+
     const [propiedadUnica, setPropiedadUnica] = useState([])
     const [mensajeFav, setMensajeFav] = useState('')
+    const [favoritos, setFavoritos] = useState([])
+    const [errorMensaje, setErrorMensaje] = useState('')
+    const [habilitadoBoton, setHabilitadoBoton] = useState(false)
     const local = localStorage.getItem('user')
     const dataFinal = JSON.parse(local)
-    console.log('carrrrd', dataFinal);
-    console.log('soy propiedad uhucas', propiedadUnica);
+
 
     useEffect(() => {
         axios.get(`http://localhost:3009/api/propiedades/${propiedad}`)
             .then((x) => {
                 setPropiedadUnica(x.data)
             })
-
     }, [])
-    console.log(propiedadUnica)
-    const addFav = () => {
-        axios.post(`http://localhost:3009/api/users/favorite/${dataFinal._id}`, { "propiedadId": propiedadUnica._id })
-            .then((x) => {
 
-                setMensajeFav(x.data.message)
-            })
+
+
+
+    const addFav = () => {
+        if (dataFinal) {
+            axios.post(`http://localhost:3009/api/users/favorite/${dataFinal._id}`, { "propiedadId": propiedadUnica._id })
+                .then((x) => {
+                    setHabilitadoBoton(true)
+                    setMensajeFav(x.data.message)
+                    setFavoritos(x.data.depto.favoritos)
+
+                })
+        }
+        else {
+            setErrorMensaje('Debe iniciar sesion para hacer esta acción');
+            setHabilitadoBoton(true)
+        }
     }
 
+    localStorage.setItem('favoritos', JSON.stringify(favoritos))
     return (
         <div>
             <Navbar />
@@ -40,10 +55,10 @@ const SingleProperty = ({ propiedad }) => {
                 <p>Tipo de localidad: {propiedadUnica.livingPlace}</p>
                 <p>Direccion: {propiedadUnica.direccion}</p>
                 <p>Precio: {propiedadUnica.price}</p>
-                {<Button onClick={addFav}>
+                {<Button onClick={addFav} disabled={habilitadoBoton}>
                     añadir a favoritos  ❤️
                 </Button>}
-                {mensajeFav ? <p>{mensajeFav}</p> : null}
+                {mensajeFav ? <p>{mensajeFav}</p> : <p> {errorMensaje} </p>}
             </div>
 
 

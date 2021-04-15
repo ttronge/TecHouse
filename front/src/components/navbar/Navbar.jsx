@@ -9,6 +9,7 @@ const Navbar = ({ name }) => {
     let menu
     const cerrarSesion = () => {
         localStorage.removeItem('user')
+        localStorage.removeItem('favoritos')
     }
     /*    const cerrarSesion = async () => {
            axios.post('http://localhost:3009/api/logout')
@@ -46,6 +47,9 @@ const Navbar = ({ name }) => {
                 </li>
                 <li>
                     <Link to='/' className={NavbarCss.link}>Alquilar</Link>
+                </li>
+                <li>
+                    <Link to='/favoritos' className={NavbarCss.link}>Favoritos</Link>
                 </li>
                 <li>
 
