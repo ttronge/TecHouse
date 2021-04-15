@@ -9,7 +9,7 @@ const singup = require('./singup')
 const private = require('./private')
 const cookie = require('./cookie')
 const logout = require('./logout')
-const favoritos = require('./favoritos')
+
 
 
 
@@ -21,7 +21,7 @@ router.use('/singup', singup) // registro
 router.use('/private', private)
 router.use('/cookie', cookie)
 router.use('/logout', logout)
-router.use('/favoritos', favoritos)
+
 //router.use('/registro', MejorandoRegisterR)
 
 

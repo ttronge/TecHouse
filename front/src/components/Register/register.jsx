@@ -25,6 +25,7 @@ class Register extends React.Component {
             loading: false,
             erores: "",
             habilitado: true,
+            user: []
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -52,13 +53,15 @@ class Register extends React.Component {
         e.preventDefault();
         this.habilitadoo()
         this.setState({ loading: true })
-        axios.post('http://localhost:3009/api/singup/', { name, lastname, email, password })
+        axios.post('http://localhost:3009/api/singup/', { name, lastname, email, password }, { withCredentials: true })
             //  .then(response => {
             //    console.log(response.data.token);
+            .then((x) => {
+                console.log(x);
+            })
             .then(() => {
                 return this.setState({ loading: true })
             })
-
             .then(() => {
                 return this.setState({ redirect: true })
             })

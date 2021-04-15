@@ -56,7 +56,13 @@ const userController = {
             .then((usuarioModificado) => {
                 usuarioModificado.populate('favoritos').execPopulate()
                     .then((usuarioConPopulated) => {
-                        res.send(usuarioConPopulated.favoritos)
+                        //res.send(usuarioConPopulated.favoritos)
+                        res.send({
+                            message: 'se ha añadido correctamente'
+                        })
+                    })
+                    .catch((e) => {
+                        res.send(e)
                     })
             })
 

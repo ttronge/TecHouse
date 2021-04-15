@@ -48,6 +48,8 @@ const authController = {
     },
     async singIn(req, res) {
 
+
+
         const user = await User.findOne(
             { email: req.body.email }
         )
@@ -70,8 +72,11 @@ const authController = {
             maxAge: 24 * 60 * 60 * 1000 // 1 day
         })
 
+
         res.send({
-            message: "succes"
+            message: "succes",
+            user: user
+
         })
 
 
@@ -98,7 +103,7 @@ const authController = {
 
         } catch (e) {
             res.status(401).send({
-                message: "hay un error"
+                message: "hay un error" + e
 
 
             })
@@ -106,15 +111,10 @@ const authController = {
     }
     ,
     async logout(req, res) {
-        try {
-
-        }
-        catch {
-            res.send({
-                message: "Error"
-            })
-        }
-        res.send('; ')
+        res.cookie('jwt', '', { maxAge: 0 })
+        res.send({
+            message: "success"
+        })
     }
 
 

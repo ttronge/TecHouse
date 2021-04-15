@@ -54,12 +54,16 @@ const SignIn = () => {
     const [redirect, setRedirect] = useState(false)
     const classes = estilo();
 
+
+
     const handleSubmit = (e) => {
         e.preventDefault()
         axios.post('http://localhost:3009/api/singin', { email: email, password: password },
             { withCredentials: true })
-            .then(() => {
-                setRedirect(true)
+            .then(({ data }) => {
+                console.log(data.user);
+                localStorage.setItem('user', JSON.stringify(data.user))
+                return setRedirect(true)
             })
             .catch((err) => console.log(err))
 

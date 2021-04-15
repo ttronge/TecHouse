@@ -15,44 +15,44 @@ import { useStyles } from './cardStyle'
 import estilo from './card.module.css'
 //--------------------------axios-------------------------------------
 import axios from 'axios'
+    ;
 
 
 
 export default function Carta() {
     const [propiedades, setPropiedades] = useState([])
-    const [user, setUsers] = useState([])
-    const [favs, setFavs] = useState([])
     const classes = useStyles();
+
+
+
     useEffect(() => {
         axios.get("http://localhost:3009/api/propiedades")
             .then((x) => {
                 setPropiedades(x.data)
             })
     }, [])
-    useEffect(() => {
-        axios.get('http://localhost:3009/api/cookie')
-            .then((x) => {
-                setUsers(x)
-            })
-    }, [])
-    console.log(user);
+    // aca va el id de user
+
+
+    /*  axios.post("http://localhost:3009/api/users/favorite/") */
     /*   useEffect(() => {
-          axios.post("http://localhost:3009/api/users/favorite/")
+          
       }) */
+    /*     axios.get('http://localhost:3009/api/cookie')
+            .then((x) => {
+                console.log(x);
+            }) */
+
+
     return (
         <div>
             <h1>Propiedades destacadas</h1>
-
-
-
             < div className={estilo.fondo} >
                 <div className={estilo.container}>
                     {
                         propiedades.length > 0 &&
                         propiedades.map(propiedad => {
                             return (
-
-
                                 < div key={propiedad._id}  >
                                     <Card className={classes.root}>
                                         <CardActionArea>
@@ -61,8 +61,6 @@ export default function Carta() {
                                                 className={classes.media}
                                                 image={propiedad.imageUrl}
                                                 title="Contemplative Reptile" />
-
-
                                             <CardContent>
                                                 <Typography gutterBottom variant="h5" component="h2">
                                                     {propiedad.direccion}
@@ -73,15 +71,12 @@ export default function Carta() {
                                                 <Box fontWeight="fontWeightBold" m={4}>
                                                     price: {propiedad.price}
                                                 </Box>
-
                                             </CardContent>
                                         </CardActionArea>
                                         <Button>
-
                                             <Link to={`/propiedad/${propiedad._id}`} className={estilo.link}> Ver mas</Link>
-
                                         </Button>
-                                        <Button >
+                                        <Button  >
                                             ❤️
                                         </Button>
                                     </Card>

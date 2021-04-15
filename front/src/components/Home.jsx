@@ -1,13 +1,16 @@
+import React, { useEffect, useState } from 'react'
 
-import React from 'react'
 import Navbar from './navbar/Navbar'
 import Card from '../components/card/card'
-const Home = () => {
+const Home = ({ name, user }) => {
+
+
+
   return (
     <div>
-      <Navbar />
-      <Card />
-
+      <Navbar name={name} />
+      {name ? 'hi ' + name : 'no estas registrado'}
+      <Card user={user} />
 
     </div>
   )
