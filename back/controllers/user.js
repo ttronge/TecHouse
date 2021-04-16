@@ -1,3 +1,4 @@
+
 const { Users, Propiedades } = require('../models/index')
 const mongoose = require('mongoose')
 const User = require('../models/users')
@@ -54,18 +55,19 @@ const userController = {
                 return user.save()
             })
             .then((usuarioModificado) => {
-                usuarioModificado.populate('propiedades')
-                    .then((usuarioConPopulated) => {
-                        //res.send(usuarioConPopulated.favoritos)
-                        res.send({
-                            depto: usuarioConPopulated,
-                            message: 'se ha añadido correctamente'
-                        })
-                    })
-                    .catch((e) => {
-                        res.send(e)
-                    })
+                console.log('---------> ', usuarioModificado);
+                // usuarioModificado.populate('propiedades')
+                // .then((usuarioConPopulated) => {
+                //res.send(usuarioConPopulated.favoritos)
+                res.send({
+                    depto: usuarioModificado,
+                    message: 'se ha añadido correctamente'
+                })
             })
+            .catch((e) => {
+                res.send(e)
+            })
+        // })
 
     },
     getFavorite(req, res) {

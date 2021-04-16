@@ -30,6 +30,7 @@ const SingleProperty = ({ propiedad }) => {
         if (dataFinal) {
             axios.post(`http://localhost:3009/api/users/favorite/${dataFinal._id}`, { "propiedadId": propiedadUnica._id })
                 .then((x) => {
+                    console.log(x);
                     setHabilitadoBoton(true)
                     setMensajeFav(x.data.message)
                     setFavoritos(x.data.depto.favoritos)
@@ -42,7 +43,7 @@ const SingleProperty = ({ propiedad }) => {
         }
     }
 
-    localStorage.setItem('favoritos', JSON.stringify(favoritos))
+    //  localStorage.setItem('favoritos', JSON.stringify(favoritos))
     return (
         <div>
             <Navbar />

@@ -11,15 +11,17 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core';
+import axios from 'axios';
 
 
 
 const Fav = () => {
-    const fav = localStorage.getItem('favoritos')
-    const favoritos = JSON.parse(fav)
+
     const user = localStorage.getItem('user')
     const usuario = JSON.parse(user)
-    console.log(favoritos)
+    console.log(usuario)
+
+    const [casaDepto, setCasaDepto] = useState([])
 
     const borrar = () => {
         localStorage.removeItem()
@@ -27,9 +29,14 @@ const Fav = () => {
 
 
 
+    useEffect(() => {
+        axios.get(`http://localhost:3009/api/users/favorite/${usuario._id}`)
+            .then((x) => {
+                setCasaDepto(x.data.favoritos);
+            })
+    }, [])
 
-
-
+    console.log(casaDepto);
     const useStyles = makeStyles({
         root: {
             maxWidth: 345,
@@ -41,7 +48,7 @@ const Fav = () => {
 
 
     const classes = useStyles();
-    if (favoritos) {
+    if (casaDepto) {
         return (
             <div>
                 <Navbar />
@@ -49,8 +56,8 @@ const Fav = () => {
                 < div className={estilo.fondo} >
                     <div className={estilo.container}>
                         {
-                            favoritos.length > 0 &&
-                            favoritos.map(propiedad => {
+                            casaDepto.length > 0 &&
+                            casaDepto.map(propiedad => {
                                 return (
                                     < div key={propiedad._id}  >
                                         <Card className={classes.root}>
@@ -72,6 +79,7 @@ const Fav = () => {
                                                     </Box>
                                                 </CardContent>
                                             </CardActionArea>
+
                                             <Button>
                                                 <Link to={`/propiedad/${propiedad._id}`} className={estilo.link}> Ver mas</Link>
                                             </Button>
@@ -110,6 +118,9 @@ const Fav = () => {
 
 
 export default Fav
+
+
+
 
 
 
