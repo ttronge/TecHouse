@@ -41,56 +41,70 @@ const Fav = () => {
 
 
     const classes = useStyles();
-    return (
-        <div>
-            <Navbar />
-            <h1>Tus favoritos {usuario.name}</h1>
-            < div className={estilo.fondo} >
-                <div className={estilo.container}>
-                    {
-                        favoritos.length > 0 &&
-                        favoritos.map(propiedad => {
-                            return (
-                                < div key={propiedad._id}  >
-                                    <Card className={classes.root}>
-                                        <CardActionArea>
-                                            <CardMedia
+    if (favoritos) {
+        return (
+            <div>
+                <Navbar />
+                <h1>Tus favoritos {usuario.name}</h1>
+                < div className={estilo.fondo} >
+                    <div className={estilo.container}>
+                        {
+                            favoritos.length > 0 &&
+                            favoritos.map(propiedad => {
+                                return (
+                                    < div key={propiedad._id}  >
+                                        <Card className={classes.root}>
+                                            <CardActionArea>
+                                                <CardMedia
 
-                                                className={classes.media}
-                                                image={propiedad.imageUrl}
-                                                title="Contemplative Reptile" />
-                                            <CardContent>
-                                                <Typography gutterBottom variant="h5" component="h2">
-                                                    {propiedad.direccion}
-                                                </Typography>
-                                                <Typography variant="body2" color="textSecondary" component="p">
-                                                    Descripcion :{propiedad.direccion}
-                                                </Typography>
-                                                <Box fontWeight="fontWeightBold" m={4}>
-                                                    price: {propiedad.price}
-                                                </Box>
-                                            </CardContent>
-                                        </CardActionArea>
-                                        <Button>
-                                            <Link to={`/propiedad/${propiedad._id}`} className={estilo.link}> Ver mas</Link>
-                                        </Button>
-                                        <Button  >
-                                            ❤️
-                                        </Button>
-                                    </Card>
-                                </div>
-                            )
-                        })
-                    }
+                                                    className={classes.media}
+                                                    image={propiedad.imageUrl}
+                                                    title="Contemplative Reptile" />
+                                                <CardContent>
+                                                    <Typography gutterBottom variant="h5" component="h2">
+                                                        {propiedad.direccion}
+                                                    </Typography>
+                                                    <Typography variant="body2" color="textSecondary" component="p">
+                                                        Descripcion :{propiedad.direccion}
+                                                    </Typography>
+                                                    <Box fontWeight="fontWeightBold" m={4}>
+                                                        price: {propiedad.price}
+                                                    </Box>
+                                                </CardContent>
+                                            </CardActionArea>
+                                            <Button>
+                                                <Link to={`/propiedad/${propiedad._id}`} className={estilo.link}> Ver mas</Link>
+                                            </Button>
+                                            <Button  >
+                                                ❤️
+                                            </Button>
+                                        </Card>
+                                    </div>
+                                )
+                            })
+                        }
 
 
 
+                    </div>
                 </div>
             </div>
-        </div>
 
 
-    )
+        )
+    }
+
+    else {
+        return (
+            <div>
+
+                <Navbar />
+                <h1>No tienes favoritos</h1>
+            </div>
+        )
+    }
+
+
 }
 
 

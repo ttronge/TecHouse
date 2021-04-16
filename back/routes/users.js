@@ -8,7 +8,7 @@ router.get('/', userController.findAll)
 router.delete('/:userId', auth.isAuth, userController.deleteUser)
 router.put('/:userId', auth.isAuth, userController.editUser)
 router.post('/favorite/:userId', userController.addFavorite)
-
+router.get('/favorite/:userId', userController.getFavorite)
 
 
 

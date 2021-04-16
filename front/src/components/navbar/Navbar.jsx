@@ -76,12 +76,7 @@ const Navbar = ({ name }) => {
 
                     </div>
                     <div > <Link to='/'><img className={NavbarCss.imagenIcono} src="https://images.vexels.com/media/users/3/127772/isolated/preview/ce0eaed4069f2b190e580759fcc98662-icono-de-bienes-ra-iacute-ces-casa-delantera-by-vexels.png" alt="" /></Link></div>
-                    {/*         <div className={NavbarCss.searchIcon}><span className="fas fa-search"></span></div>
-                    <div className={NavbarCss.cancelIcon}><span className="fas fa-times"></span></div> */}
-                    {/* <form action="#">
-                        <input type="search" className={NavbarCss.buscador} placeholder='Buscar...' required />
-                        <button type='submit' className='fas fa-search'></button>
-                    </form> */}`
+
                 </nav>
             </div>
 

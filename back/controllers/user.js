@@ -54,7 +54,7 @@ const userController = {
                 return user.save()
             })
             .then((usuarioModificado) => {
-                usuarioModificado.populate('favoritos').execPopulate()
+                usuarioModificado.populate('propiedades')
                     .then((usuarioConPopulated) => {
                         //res.send(usuarioConPopulated.favoritos)
                         res.send({
@@ -67,7 +67,14 @@ const userController = {
                     })
             })
 
+    },
+    getFavorite(req, res) {
+        User.findById(req.params.userId).populate('favoritos')
+            .then((user) => {
+                res.send(user)
+            })
     }
+
 
 
 }
