@@ -75,6 +75,20 @@ const userController = {
             .then((user) => {
                 res.send(user)
             })
+    },
+    deleteFavorite(req, res) {
+        User.findById(req.params.userId)
+            .then((usuario) => {
+                usuario.favoritos.splice(req.body.propiedadId, 1)
+                return usuario.save()
+            })
+            .then((x) => {
+                console.log(x)
+                res.send({
+                    message: "Eliminado exitosamente",
+
+                })
+            })
     }
 
 
