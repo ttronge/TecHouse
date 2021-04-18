@@ -37,7 +37,7 @@ const Fav = () => {
             })
 
     }
-    const DeleteFav = (x) => {
+    const DeleteFav = () => {
         axios.post(`http://localhost:3009/api/users/favoriteDelete/${usuario._id}`, { "propiedadId": casaDepto._id })
             .then(() => {
                 return verPropiedad()
@@ -93,7 +93,7 @@ const Fav = () => {
                                                 <Link to={`/propiedad/${propiedad._id}`} className={estilo.link}> Ver mas</Link>
                                             </Button>
 
-                                            <Button onClick={DeleteFav} >
+                                            <Button onClick={DeleteFav}  >
                                                 🗑️
                                                 </Button>
                                         </Card>
