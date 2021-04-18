@@ -3,7 +3,7 @@ import NavbarCss from './navbar.module.css'
 import { Link } from 'react-router-dom'
 import Register from '../Register/register'
 import axios from 'axios'
-//import logo from '../../assets/logo'
+
 
 const Navbar = ({ name }) => {
     let menu
@@ -11,12 +11,7 @@ const Navbar = ({ name }) => {
         localStorage.removeItem('user')
         localStorage.removeItem('favoritos')
     }
-    /*    const cerrarSesion = async () => {
-           axios.post('http://localhost:3009/api/logout')
-               .then((x) => {
-                   console.log(x);
-               })
-       } */
+
 
     if (name === '') {
         menu = (
@@ -34,6 +29,7 @@ const Navbar = ({ name }) => {
                     <Link to='/' className={NavbarCss.link}>Alquilar</Link>
                 </li>
 
+
             </>
 
 
@@ -46,15 +42,13 @@ const Navbar = ({ name }) => {
                     <Link to='/' className={NavbarCss.link}>Comprar</Link>
                 </li>
                 <li>
-                    <Link to='/' className={NavbarCss.link}>Alquilar</Link>
+                    <Link to='/agregar' className={NavbarCss.link}>Agregar propiedad</Link>
                 </li>
                 <li>
                     <Link to='/favoritos' className={NavbarCss.link}>Favoritos</Link>
                 </li>
                 <li>
-
                     <Link to='/' className={NavbarCss.link} onClick={cerrarSesion}>cerrar sesion</Link>
-
                 </li>
             </>
         )

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../navbar/Navbar'
 import estilo from '../card/card.module.css'
+import axios from 'axios';
 //-----------material --------------------
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -11,7 +12,6 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core';
-import axios from 'axios';
 
 
 
@@ -19,13 +19,7 @@ const Fav = () => {
 
     const user = localStorage.getItem('user')
     const usuario = JSON.parse(user)
-    console.log(usuario)
-
     const [casaDepto, setCasaDepto] = useState([])
-
-    const borrar = () => {
-        localStorage.removeItem()
-    }
 
 
 
@@ -36,7 +30,22 @@ const Fav = () => {
             })
     }, [])
 
-    console.log(casaDepto);
+    const verPropiedad = () => {
+        return axios.get(`http://localhost:3009/api/users/favorite/${usuario._id}`)
+            .then((x) => {
+                setCasaDepto(x.data.favoritos);
+            })
+
+    }
+    const DeleteFav = (x) => {
+        axios.post(`http://localhost:3009/api/users/favoriteDelete/${usuario._id}`, { "propiedadId": casaDepto._id })
+            .then(() => {
+                return verPropiedad()
+            })
+    }
+
+
+
     const useStyles = makeStyles({
         root: {
             maxWidth: 345,
@@ -48,7 +57,7 @@ const Fav = () => {
 
 
     const classes = useStyles();
-    if (casaDepto) {
+    if (casaDepto.length > 0) {
         return (
             <div>
                 <Navbar />
@@ -83,9 +92,10 @@ const Fav = () => {
                                             <Button>
                                                 <Link to={`/propiedad/${propiedad._id}`} className={estilo.link}> Ver mas</Link>
                                             </Button>
-                                            <Button  >
-                                                ❤️
-                                            </Button>
+
+                                            <Button onClick={DeleteFav} >
+                                                🗑️
+                                                </Button>
                                         </Card>
                                     </div>
                                 )
@@ -96,7 +106,7 @@ const Fav = () => {
 
                     </div>
                 </div>
-            </div>
+            </div >
 
 
         )

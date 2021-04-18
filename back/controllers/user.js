@@ -55,7 +55,7 @@ const userController = {
                 return user.save()
             })
             .then((usuarioModificado) => {
-                console.log('---------> ', usuarioModificado);
+
                 // usuarioModificado.populate('propiedades')
                 // .then((usuarioConPopulated) => {
                 //res.send(usuarioConPopulated.favoritos)
@@ -83,10 +83,8 @@ const userController = {
                 return usuario.save()
             })
             .then((x) => {
-                console.log(x)
                 res.send({
                     message: "Eliminado exitosamente",
-
                 })
             })
     }
