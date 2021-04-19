@@ -28,7 +28,7 @@ const propiedadesSchema = new Schema({
     },
     available: {
         type: Boolean,
-        required: true,
+        default: true,
     },
     /*    propietario: {
            type: Schema.Types.ObjectId,

@@ -1,0 +1,27 @@
+.bloque {
+    display: block;
+}
+.centrado {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+
+}
+.container{
+    display: flex;
+    justify-content: center;
+    width: 400px;
+    height: 500px;
+}
+.botonEnviar{
+    display: flex;
+    justify-content: center;
+    width: 202px;
+    height: 44px;
+    border-radius: 20px;
+}
+.botonEnviar button {
+    margin-top: 20px;
+  width: 211px;
+  height: 37px;
+}
