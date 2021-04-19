@@ -14,14 +14,26 @@
     height: 500px;
 }
 .botonEnviar{
-    display: flex;
-    justify-content: center;
+
     width: 202px;
     height: 44px;
     border-radius: 20px;
 }
+input {
+    margin-bottom: 5px;
+}
 .botonEnviar button {
-    margin-top: 20px;
-  width: 211px;
-  height: 37px;
+    display: block;
+    color: white;
+    background-color: #171C24;
+    border-radius: 18px;
+    padding-left: 0px;
+    width: 208px;
+    height: 45px;
+    margin-top: 0px;
+    margin-bottom: 24px;
+
+}
+.botonEnviar button:hover{
+    color: black;
 }

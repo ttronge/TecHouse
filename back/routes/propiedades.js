@@ -9,9 +9,9 @@ router.get('/', propiedadesController.findAll)
 router.post('/', propiedadesController.createProperty)
 router.delete('/:propiedadId', propiedadesController.deleteProperty)
 router.put('/:propiedadId', propiedadesController.editProperty)
-
-
-
+router.post('/zona', propiedadesController.filtroDeZona)
+router.post('/preciomenor', propiedadesController.filtroDePrecioMenor)
+router.post('/preciomayor', propiedadesController.filtroDePrecioMayor)
 /* router.get('/', (req, res) => {
     Propiedades.find({}, function (err, propiedades) {
         Users.populate(propiedades, { path: "user" }, function (err, propiedades) {

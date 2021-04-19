@@ -1,8 +1,6 @@
 import React from 'react';
 import NavbarCss from './navbar.module.css'
 import { Link } from 'react-router-dom'
-import Register from '../Register/register'
-import axios from 'axios'
 
 
 const Navbar = ({ name }) => {
@@ -23,7 +21,7 @@ const Navbar = ({ name }) => {
                     <Link to='/singin' className={NavbarCss.link}>SingIn</Link>
                 </li>
                 <li>
-                    <Link to='/' className={NavbarCss.link}>Comprar</Link>
+                    <Link to='/propiedades' className={NavbarCss.link}>Ver propiedades</Link>
                 </li>
                 <li>
                     <Link to='/' className={NavbarCss.link}>Alquilar</Link>
@@ -39,7 +37,7 @@ const Navbar = ({ name }) => {
         menu = (
             <>
                 <li>
-                    <Link to='/' className={NavbarCss.link}>Comprar</Link>
+                    <Link to='/propiedades' className={NavbarCss.link}>Ver propiedades</Link>
                 </li>
                 <li>
                     <Link to='/agregar' className={NavbarCss.link}>Agregar propiedad</Link>

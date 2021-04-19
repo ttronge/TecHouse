@@ -24,9 +24,9 @@ const propiedadesController = {
     createProperty(req, res) {
         Propiedades.create(req.body)
             .then(() => {
-                res.send('Creado')
+                res.send('Se ha creado correctamente')
             })
-            .catch((error) => res.send(error))
+            .catch((error) => res.send('Error al crear propiedad'))
     },
     deleteProperty(req, res) {
         Propiedades.findByIdAndRemove({ _id: req.params.propiedadId })
@@ -46,9 +46,40 @@ const propiedadesController = {
             })
 
     },
-    /*  addImage(req,res){
-         Propiedades.
-     } */
+    filtroDeZona(req, res) {
+        Propiedades.find({ ubicacion: req.body.zona })
+            .then((x) => {
+                res.send(x)
+            })
+            .catch((x) => {
+                res.send({
+                    message: "Ha ocurrido un problema " + x
+                })
+            })
+    },
+    filtroDePrecioMenor(req, res) {
+        Propiedades.find({ "price": { "$lte": req.body.precio } })
+            .then((x) => {
+                res.send(x)
+            })
+            .catch((x) => {
+                res.send({
+                    message: "Ha ocurrido un problema " + x
+                })
+            })
+    },
+    filtroDePrecioMayor(req, res) {
+        Propiedades.find({ "price": { "$gte": req.body.precio } })
+            .then((x) => {
+                res.send(x)
+            })
+            .catch((x) => {
+                res.send({
+                    message: "Ha ocurrido un problema " + x
+                })
+            })
+    }
+
 
 }
 
