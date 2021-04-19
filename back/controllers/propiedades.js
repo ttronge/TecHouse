@@ -94,6 +94,11 @@ const propiedadesController = {
 
 
 }
+//Book.find(query).sort({"campo":-1}).exec... 
+/*
+-1: si es descendente
+1: si es ascendete
+*/
 
 
 

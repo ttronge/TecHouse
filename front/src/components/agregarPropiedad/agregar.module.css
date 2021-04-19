@@ -1,17 +1,20 @@
-.bloque {
+h1 {
+    margin-bottom:50px ;
+}
+.bloque{
     display: block;
 }
-.centrado {
-    margin-top: 30px;
+.divs{
     display: flex;
     justify-content: center;
-
 }
-.container{
+input {
+    margin-bottom: 5px;
+    margin-right: 37px;
+}
+.abajoDeForm{
     display: flex;
     justify-content: center;
-    width: 400px;
-    height: 500px;
 }
 .botonEnviar{
 
