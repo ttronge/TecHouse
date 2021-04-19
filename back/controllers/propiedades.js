@@ -78,6 +78,18 @@ const propiedadesController = {
                     message: "Ha ocurrido un problema " + x
                 })
             })
+    },
+    filtroEntrePrecios(req, res) {
+        Propiedades.find({ "price": { "$gte": req.body.precioMayor, "$lte": req.body.precioMenor } })
+            .then((x) => {
+                res.send(x)
+            })
+            .catch(() => {
+                res.send({
+                    message: "Ha ocurrido un problema " + x
+                })
+            })
+
     }
 
 
