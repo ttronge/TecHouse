@@ -24,7 +24,7 @@ export default function Carta() {
     const classes = useStyles();
 
     const destacadas = propiedades.slice(0, 6)
-
+    console.log(destacadas);
 
     useEffect(() => {
         axios.get("http://localhost:3009/api/propiedades")
@@ -64,17 +64,22 @@ export default function Carta() {
                                                 </Box>
                                             </CardContent>
                                         </CardActionArea>
+
                                         <Button>
                                             <Link to={`/propiedad/${propiedad._id}`} className={estilo.link}> Ver mas</Link>
                                         </Button>
-                                        <Button  >
-                                            ❤️
-                                        </Button>
+
+                                        <Button   >
+                                            🗑️
+                                                </Button>
                                     </Card>
                                 </div>
                             )
                         })
                     }
+
+
+
                 </div>
             </div>
         </div>
