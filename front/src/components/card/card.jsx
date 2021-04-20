@@ -15,7 +15,7 @@ import { useStyles } from './cardStyle'
 import estilo from './card.module.css'
 //--------------------------axios-------------------------------------
 import axios from 'axios'
-    ;
+
 
 
 
@@ -69,9 +69,7 @@ export default function Carta() {
                                             <Link to={`/propiedad/${propiedad._id}`} className={estilo.link}> Ver mas</Link>
                                         </Button>
 
-                                        <Button   >
-                                            🗑️
-                                                </Button>
+
                                     </Card>
                                 </div>
                             )

@@ -1,18 +1,15 @@
-.filtros{
-    background-color: #FF7E6B;
-    padding-top: 20px; ;
+
+
+.containerFlex{
     display: flex;
     justify-content: center;
+    background-color: #FF7E6B;
 }
-.filtros label {
+.containerFlex div {
     color: black;
 }
-.boton {
-   
-}
-form {
-    padding-left: 334px;
-}
+
+
 
 .container {
     margin-top: 77px;
@@ -45,4 +42,5 @@ h1 {
     margin-top: 25px;
     display: flex;
     justify-content: center;
+  
 }
