@@ -12,8 +12,8 @@ router.post('/zona', propiedadesController.filtroDeZona)
 router.post('/preciomenor', propiedadesController.filtroDePrecioMenor)
 router.post('/preciomayor', propiedadesController.filtroDePrecioMayor)
 router.post('/entreprecios', propiedadesController.filtroEntrePrecios)
-
-
+router.post('/ordenarmayoramenor', propiedadesController.ordenarMayorAMenor)
+router.post('/ordenarmenoramayor', propiedadesController.ordenarDeMenoraMayor)
 
 
 

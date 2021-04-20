@@ -5,12 +5,15 @@ require("../config/index");
 
 const departamento1 = {
     livingPlace: "departamento",
+    tipoDeOperacion: "alquiler",
     direccion: "3 de febrero 2200",
-    price: 50000000,
-    location: "rivadiabia",
-    imageUrl: "https://images.homify.com/c_fill,f_auto,q_0,w_740/v1490750889/p/photo/image/1926732/1.jpg",
     ubicacion: "montes de oca",
-    available: true
+    ambientes: 3,
+    superficie: 80,
+    price: 150000,
+    toilet: 2,
+    cocheras: 1,
+    imageUrl: "https://images.homify.com/c_fill,f_auto,q_0,w_740/v1490750889/p/photo/image/1926732/1.jpg",
 };
 
 const departamento2 = {

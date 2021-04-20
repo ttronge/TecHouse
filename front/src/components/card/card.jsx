@@ -23,6 +23,7 @@ export default function Carta() {
     const [propiedades, setPropiedades] = useState([])
     const classes = useStyles();
 
+    const destacadas = propiedades.slice(0, 6)
 
 
     useEffect(() => {
@@ -40,8 +41,8 @@ export default function Carta() {
             < div className={estilo.fondo} >
                 <div className={estilo.container}>
                     {
-                        propiedades.length > 0 &&
-                        propiedades.map(propiedad => {
+                        destacadas.length > 0 &&
+                        destacadas.map(propiedad => {
                             return (
                                 < div key={propiedad._id}  >
                                     <Card className={classes.root}>

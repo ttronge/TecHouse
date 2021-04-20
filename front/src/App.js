@@ -6,6 +6,7 @@ import Singin from './components/singin/Singin'
 import SingleProperty from './components/singleProperty/singleProperty'
 import favoritos from './components/favoritos/fav'
 import AgregarPropiedad from './components/agregarPropiedad/agregarPropiedad'
+import propiedadesAll from './components/propiedaesAll/propiedades'
 function App() {
   const [name, setName] = useState("")
 
@@ -41,11 +42,11 @@ function App() {
 
       <BrowserRouter>
         <Switch>
-
           <Route exact path="/" component={() => <Home name={name} />} />
           <Route exact path="/registro" component={register} />
           <Route exact path='/singin' component={Singin} />
           <Route exact path='/favoritos' component={favoritos} />
+          <Route exact path="/propiedades" component={propiedadesAll} />
           <Route exact path="/propiedad/:id" render={({ match }) => <SingleProperty propiedad={match.params.id} />} />
           <Route exact path='/agregar' component={AgregarPropiedad} />
         </Switch>

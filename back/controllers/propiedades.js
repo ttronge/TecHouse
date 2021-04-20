@@ -90,7 +90,27 @@ const propiedadesController = {
                 })
             })
 
+    },
+    ordenarMayorAMenor(req, res) {
+        Propiedades.find({}).sort({ "price": -1 })
+            .then((x) => {
+                res.send(x)
+            })
+            .catch((x) => {
+                res.send('hay un problema viejo' + x)
+            })
+    },
+    ordenarDeMenoraMayor(req, res) {
+        Propiedades.find({}).sort({ "price": 1 })
+            .then((x) => {
+                res.send(x)
+            })
+            .catch((x) => {
+                res.send('hay un problema viejo' + x)
+            })
     }
+
+
 
 
 }
