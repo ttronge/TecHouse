@@ -21,11 +21,7 @@ const Propiedades = () => {
     const [zona, setZona] = useState('')
     const [menorPrecio, setMenorPrecio] = useState('')
     const [mayorPrecio, setMayorPrecio] = useState('')
-    const [desde, setDesde] = useState('')
-    const [hasta, setHasta] = useState('')
-    const [filtrosZona, setFiltrosZona] = useState([])
-    const [filtrosMenorPrecio, setFiltrosMenorPrecio] = useState([])
-    const [filtrosMayoprecio, setFiltrosMayorPrecio] = useState([])
+    const [tipoDeOperacion, setTipoDeOperacion] = useState('')
     const classes = useStyles()
 
     useEffect(() => {
@@ -34,23 +30,40 @@ const Propiedades = () => {
                 setPropiedades(x.data);
             })
     }, [])
+    const reset = () => {
+        axios.get('http://localhost:3009/api/propiedades')
+            .then((x) => {
+                setPropiedades(x.data);
+            })
+    }
+    const handleChangeTipoDeOperacion = (e) => {
+        setTipoDeOperacion(e.target.value)
+    }
+    const handleSubmitOperacion = (e) => {
+        e.preventDefault()
+        filtroOperacion()
+    }
+
     const handleChangeZona = (e) => {
         setZona(e.target.value)
-    }
-    const handleChangeMenorPrecio = (e) => {
-        setMenorPrecio(parseInt(e.target.value))
-
-    }
-    const handleChangeMayorPrecio = (e) => {
-        setMayorPrecio(e.target.value)
     }
     const handleSubmitZona = (e) => {
         e.preventDefault()
         filtrarZona()
     }
+
+    const handleChangeMenorPrecio = (e) => {
+        setMenorPrecio(parseInt(e.target.value))
+
+    }
     const handleSubmitMenorPrecio = (e) => {
         e.preventDefault()
         filtrarMenorPrecio()
+    }
+
+
+    const handleChangeMayorPrecio = (e) => {
+        setMayorPrecio(e.target.value)
     }
     const handleSubmitMayorPrecio = (e) => {
         e.preventDefault()
@@ -60,6 +73,7 @@ const Propiedades = () => {
     const filtrarZona = () => {
         axios.post('http://localhost:3009/api/propiedades/zona', { "zona": zona })
             .then((x) => {
+                console.log(x)
                 setPropiedades(x.data)
             })
     }
@@ -76,14 +90,24 @@ const Propiedades = () => {
                 setPropiedades(x.data)
             })
     }
+    const filtroOperacion = () => {
+        axios.post("http://localhost:3009/api/propiedades/operacion", { "tipoDeOperacion": tipoDeOperacion })
+            .then((x) => {
+                setPropiedades(x.data)
+            })
+    }
 
     return (
 
         < div >
+            {console.log(tipoDeOperacion)}
             <Navbar />
             <header>
                 <div className={estilo.containerFlex} >
-                    <form action="" onSubmit={handleSubmitZona}>
+                    <Button onClick={reset}>
+                        Reset
+                    </Button>
+                    <form action="" onSubmit={handleSubmitZona} className={estilo.formZone}>
                         <div>
                             <label htmlFor="zona">
                                 <div>zona</div>
@@ -117,12 +141,12 @@ const Propiedades = () => {
                         </form>
                     </div>
                     <div>
-                        <form action="">
+                        <form action="" onSubmit={handleSubmitOperacion}>
                             <label htmlFor="propiedades">
                                 <div> Seleccione tipo de propiedad</div>
-                                <input list='propiedades' />
+                                <input list='propiedades' onChange={handleChangeTipoDeOperacion} />
                                 <datalist id='propiedades'>
-                                    <option value="Alquiler">Alquiler</option>
+                                    <option value="alquiler">alquiler</option>
                                     <option value="Compra">Compra</option>
                                 </datalist>
                             </label>
@@ -132,7 +156,8 @@ const Propiedades = () => {
                         </form>
 
                     </div>
-
+                </div>
+                <div>
 
                 </div>
             </header>
@@ -162,7 +187,8 @@ const Propiedades = () => {
                                                 </Typography>
                                                 <Box fontWeight="fontWeightBold" m={4}>
                                                     price: {propiedad.price}
-                                                    <p>{propiedad.ubicacion}</p>
+                                                    <p>Ubicacion :{propiedad.ubicacion}</p>
+                                                    <p>Tipo de operacion: {propiedad.tipoDeOperacion}</p>
                                                 </Box>
                                                 <Button>
                                                     <Link to={`/propiedad/${propiedad._id}`} className={estilo.link}> Ver mas</Link>
@@ -173,16 +199,20 @@ const Propiedades = () => {
 
                                             </CardContent>
                                         </CardActionArea>
-
-
                                     </Card>
+
                                 )
                             })
                         }
                     </div>
+
                 </div >
+
             </div>
+
         </div >
+
+
     )
 }
 

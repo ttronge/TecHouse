@@ -139,11 +139,11 @@ const AgregarPropiedad = () => {
 
 
                         <div className={estilo.abajoDeForm}>
-                            {mensajeCreacion ? <p className={estilo.bloque}>{mensajeCreacion}</p> : null}
+
                             <div className={estilo.botonEnviar}>
 
                                 <Button disabled={habilitadoBoton} className={estilo.botonPiola} type='submit' >Enviar</Button>
-
+                                {mensajeCreacion ? <p className={estilo.bloque}>{mensajeCreacion}</p> : null}
                             </div>
                         </div>
 

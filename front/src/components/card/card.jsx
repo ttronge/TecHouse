@@ -37,7 +37,10 @@ export default function Carta() {
 
     return (
         <div>
-            <h1>Propiedades destacadas</h1>
+            <div className={estilo.titulo1}>
+                <h1>Propiedades destacadas</h1>
+            </div>
+
             < div className={estilo.fondo} >
                 <div className={estilo.container}>
                     {

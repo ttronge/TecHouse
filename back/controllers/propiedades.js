@@ -51,9 +51,9 @@ const propiedadesController = {
             .then((x) => {
                 res.send(x)
             })
-            .catch((x) => {
+            .catch(() => {
                 res.send({
-                    message: "Ha ocurrido un problema " + x
+                    message: "Ha ocurrido un problema "
                 })
             })
     },
@@ -91,6 +91,17 @@ const propiedadesController = {
             })
 
     },
+    filtrosDeOperacion(req, res) {
+        Propiedades.find({ tipoDeOperacion: req.body.operacion })
+            .then((x) => {
+                res.send(x)
+            })
+            .catch((x) => {
+                res.send({
+                    message: "algo malo hay y es " + x
+                })
+            })
+    },
     ordenarMayorAMenor(req, res) {
         Propiedades.find({}).sort({ "price": -1 })
             .then((x) => {
@@ -109,6 +120,7 @@ const propiedadesController = {
                 res.send('hay un problema viejo' + x)
             })
     }
+
 
 
 

@@ -1,5 +1,3 @@
-
-
 .containerFlex{
     display: flex;
     justify-content: center;
@@ -9,7 +7,12 @@
     color: black;
 }
 
-
+.formZone {
+    margin-left: 344px;  
+}
+form input {
+    margin-right: 0px;
+}
 
 .container {
     margin-top: 77px;
@@ -18,11 +21,10 @@
     grid-template-columns:  33% 33% 33%;
     grid-gap: 40px;
 }
-h1 {
-    margin-top: 36px;
-    padding-right: 135px;
+.titulo1 {
+    display: flex;
+    justify-content: center;
 }
-
 .link {
     text-decoration: none;
     color: black;
@@ -34,13 +36,16 @@ h1 {
     height: 140px;
 }
 .gridContainer{
+    margin-top: 77px;
+    margin-left: 300px;
     display: grid;
-    grid-template-columns: 33% 33% 33%;
-    grid-gap: 100px;
+    grid-template-columns:  33% 33% 33%;
+    grid-gap: 40px;
 }
+
 .fle {
-    margin-top: 25px;
+/*     margin-top: 25px;
     display: flex;
     justify-content: center;
-  
+   */
 }
