@@ -91,7 +91,7 @@ const Propiedades = () => {
             })
     }
     const filtroOperacion = () => {
-        axios.post("http://localhost:3009/api/propiedades/operacion", { "tipoDeOperacion": tipoDeOperacion })
+        axios.post("http://localhost:3009/api/propiedades/operacion", { "operacion": tipoDeOperacion })
             .then((x) => {
                 setPropiedades(x.data)
             })
@@ -100,7 +100,7 @@ const Propiedades = () => {
     return (
 
         < div >
-            {console.log(propiedades)}
+            {console.log(tipoDeOperacion)}
             <Navbar />
             <header>
                 <div className={estilo.containerFlex} >
@@ -146,8 +146,8 @@ const Propiedades = () => {
                                 <div> Seleccione tipo de propiedad</div>
                                 <input list='propiedades' onChange={handleChangeTipoDeOperacion} />
                                 <datalist id='propiedades'>
-                                    <option value="alquiler">alquiler</option>
-                                    <option value="Compra">Compra</option>
+                                    <option value="Alquiler">Alquiler</option>
+                                    <option value="Venta">Venta</option>
                                 </datalist>
                             </label>
                             <Button onSubmit={handleSubmitMenorPrecio} type="submit" className={estilo.boton}>

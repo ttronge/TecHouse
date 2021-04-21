@@ -39,6 +39,11 @@ const propiedadesSchema = new Schema({
         type: Number,
         require: true
     },
+    descripcion: {
+        type: String,
+        require: true
+
+    },
     imageUrl: {
         type: String,
         required: true,
