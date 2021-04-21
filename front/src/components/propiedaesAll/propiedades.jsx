@@ -23,7 +23,7 @@ const Propiedades = () => {
     const [mayorPrecio, setMayorPrecio] = useState('')
     const [tipoDeOperacion, setTipoDeOperacion] = useState('')
     const classes = useStyles()
-
+    let msg
     useEffect(() => {
         axios.get('http://localhost:3009/api/propiedades')
             .then((x) => {
@@ -100,11 +100,11 @@ const Propiedades = () => {
     return (
 
         < div >
-            {console.log(tipoDeOperacion)}
+            {console.log(propiedades)}
             <Navbar />
             <header>
                 <div className={estilo.containerFlex} >
-                    <Button onClick={reset}>
+                    <Button onClick={reset} className={estilo.boton}>
                         Reset
                     </Button>
                     <form action="" onSubmit={handleSubmitZona} className={estilo.formZone}>
@@ -113,7 +113,7 @@ const Propiedades = () => {
                                 <div>zona</div>
                                 <input onChange={handleChangeZona} type="text" name='zona' />
                             </label>
-                            <Button onSubmit={handleSubmitZona} type="submit" >
+                            <Button onSubmit={handleSubmitZona} type="submit" className={estilo.boton}>
                                 Filtrar
                         </Button>
                         </div>
@@ -121,10 +121,10 @@ const Propiedades = () => {
                     <div>
                         <form action="" onSubmit={handleSubmitMenorPrecio}>
                             <label htmlFor="">
-                                <div>Menor precio</div>
+                                <div>Precio hasta</div>
                                 <input onChange={handleChangeMenorPrecio} type="text" />
                             </label>
-                            <Button type="submit" >
+                            <Button type="submit" className={estilo.boton}>
                                 Filtrar
                         </Button>
                         </form>
@@ -132,7 +132,7 @@ const Propiedades = () => {
                     <div>
                         <form action="" onSubmit={handleSubmitMayorPrecio}>
                             <label htmlFor="">
-                                <div>Mayor precio</div>
+                                <div>Desde precio</div>
                                 <input type="text" onChange={handleChangeMayorPrecio} />
                             </label>
                             <Button type="submit" className={estilo.boton}>

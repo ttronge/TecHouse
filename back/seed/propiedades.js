@@ -1,4 +1,3 @@
-
 const Propiedades = require('../models/propiedades')
 require("../config/index");
 
@@ -17,69 +16,97 @@ const departamento1 = {
 };
 
 const departamento2 = {
-    livingPlace: "departamento",
-    direccion: "Av. Olazábal 4800",
-    price: 100000,
-    location: "Villa Urquiza",
-    imageUrl: "https://static1.sosiva451.com/2912995/9126ac96-e58b-470b-a932-44e14d61956c_u_large.jpg",
-    ubicacion: "Villa Urquiza",
-    available: true
+
+    livingPlace: "Casa",
+    tipoDeOperacion: "Venta",
+    direccion: "Bolivar 505",
+    ubicacion: "San martin",
+    ambientes: 3,
+    superficie: 50,
+    price: 15000,
+    toilet: 2,
+    cocheras: 1,
+    imageUrl: "https://i.pinimg.com/originals/fe/7b/7b/fe7b7bdbd8116f54e8d5ccb2002b3274.jpg"
+
 };
 
 const departamento3 = {
-    livingPlace: "departamento",
-    direccion: "Gorriti 4200",
-    price: 300000,
-    location: "Palermo",
-    imageUrl: "https://www.on24.com.ar/wp-content/uploads/2020/03/Zonaprop-Dpto-Home.png",
-    ubicacion: "Palermo",
-    available: true
+    livingPlace: "Casa",
+    tipoDeOperacion: "Venta",
+    direccion: "Bolivar 505",
+    ubicacion: "San martin",
+    ambientes: 3,
+    superficie: 50,
+    price: 15000,
+    toilet: 2,
+    cocheras: 1,
+    imageUrl: "https://i.pinimg.com/originals/fe/7b/7b/fe7b7bdbd8116f54e8d5ccb2002b3274.jpg"
+
 };
 
 const departamento4 = {
-    livingPlace: "departamento",
-    direccion: "Cuba 2000",
-    price: 300000,
-    location: "Belgrano",
-    imageUrl: "https://www.ciudaris.com/blog/wp-content/uploads/ventajas-vivir-departamento-03.jpg",
-    ubicacion: "Belgrano",
-    available: true
+    livingPlace: "Casa",
+    tipoDeOperacion: "Venta",
+    direccion: "Bolivar 505",
+    ubicacion: "San martin",
+    ambientes: 3,
+    superficie: 50,
+    price: 15000,
+    toilet: 2,
+    cocheras: 1,
+    imageUrl: "https://i.pinimg.com/originals/fe/7b/7b/fe7b7bdbd8116f54e8d5ccb2002b3274.jpg"
 };
 const departamento5 = {
-    livingPlace: "departamento",
-    direccion: "Mercedes 2200",
-    price: 5800000,
-    location: "Devoto",
-    imageUrl: "https://www.arquimaster.com.ar/web/wp-content/uploads/2020/11/departamento_camilo_slide.jpg",
-    ubicacion: "Devoto",
-    available: true
+    livingPlace: "Casa",
+    tipoDeOperacion: "Venta",
+    direccion: "Bolivar 505",
+    ubicacion: "San martin",
+    ambientes: 3,
+    superficie: 50,
+    price: 15000,
+    toilet: 2,
+    cocheras: 1,
+    imageUrl: "https://i.pinimg.com/originals/fe/7b/7b/fe7b7bdbd8116f54e8d5ccb2002b3274.jpg"
+
 };
 const departamento6 = {
-    livingPlace: "departamento",
-    direccion: "Neuquen 765",
-    price: 50000000,
-    location: "Caballito",
-    imageUrl: "https://images.estilosdeco.com/2018/04/departamento-moderno-masculino-38-metros-1.jpg",
-    ubicacion: "Caballito",
-    available: true
+    livingPlace: "Casa",
+    tipoDeOperacion: "Venta",
+    direccion: "Bolivar 505",
+    ubicacion: "San martin",
+    ambientes: 3,
+    superficie: 50,
+    price: 15000,
+    toilet: 2,
+    cocheras: 1,
+    imageUrl: "https://i.pinimg.com/originals/fe/7b/7b/fe7b7bdbd8116f54e8d5ccb2002b3274.jpg"
+
 };
 const departamento7 = {
-    livingPlace: "departamento",
-    direccion: "Entre rios 600",
-    price: 62000,
-    location: "Martinez",
-    imageUrl: "https://imgar.zonapropcdn.com/avisos/1/00/47/15/95/39/720x532/1750591641.jpg",
-    ubicacion: "Martinez",
-    available: true
+    livingPlace: "Casa",
+    tipoDeOperacion: "Venta",
+    direccion: "Bolivar 505",
+    ubicacion: "San martin",
+    ambientes: 3,
+    superficie: 50,
+    price: 15000,
+    toilet: 2,
+    cocheras: 1,
+    imageUrl: "https://i.pinimg.com/originals/fe/7b/7b/fe7b7bdbd8116f54e8d5ccb2002b3274.jpg"
+
 };
 const departamento8 = {
-    livingPlace: "departamento",
-    direccion: "Chivilcoy 200",
-    price: 90000,
-    location: "Floresta",
-    imageUrl: "https://static1.sosiva451.com/7595398/42f34445-192b-4c1b-a1e7-5b1d76684948_u_small.jpg",
-    ubicacion: "Floresta",
-    available: true
+    livingPlace: "Casa",
+    tipoDeOperacion: "Venta",
+    direccion: "Bolivar 505",
+    ubicacion: "San martin",
+    ambientes: 3,
+    superficie: 50,
+    price: 15000,
+    toilet: 2,
+    cocheras: 1,
+    imageUrl: "https://i.pinimg.com/originals/fe/7b/7b/fe7b7bdbd8116f54e8d5ccb2002b3274.jpg"
+
 };
 
 
