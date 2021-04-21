@@ -77,9 +77,9 @@ const userController = {
             })
     },
     deleteFavorite(req, res) {
+        console.log(req.body.propiedadId);
         User.findById(req.params.userId)
             .then((usuario) => {
-                //FindIDandDestroy buscar 
                 usuario.favoritos.splice(req.body.propiedadId, 1)
                 return usuario.save()
             })

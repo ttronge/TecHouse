@@ -24,13 +24,6 @@ function App() {
         catch {
           return 'error'
         }
-        //const response = await axios.get('http://localhost:3009/api/cookie',
-        //{ withCredentials: true })
-        //const content = await response
-
-        //console.log(content.data)
-        //localStorage.getItem('user', JSON.parse())
-
       }
     )()
 

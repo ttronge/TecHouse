@@ -9,48 +9,42 @@ const Navbar = ({ name }) => {
         localStorage.removeItem('user')
         localStorage.removeItem('favoritos')
     }
+    const local = localStorage.getItem('user')
+    const dataFinal = JSON.parse(local)
+    dataFinal ? menu = (
+        <>
+            <li>
+                <Link to='/propiedades' className={NavbarCss.link}>Ver propiedades</Link>
+            </li>
+            <li>
+                <Link to='/agregar' className={NavbarCss.link}>Agregar propiedad</Link>
+            </li>
+            <li>
+                <Link to='/favoritos' className={NavbarCss.link}>Favoritos</Link>
+            </li>
+            <li>
+                <Link to='/' className={NavbarCss.link} onClick={cerrarSesion}>cerrar sesion</Link>
+            </li>
+        </>
 
+    ) : menu = (
+        <>
+            <li>
+                <Link to='/registro' className={NavbarCss.link}>Registrarse</Link>
+            </li>
+            <li>
+                <Link to='/singin' className={NavbarCss.link}>SingIn</Link>
+            </li>
+            <li>
+                <Link to='/propiedades' className={NavbarCss.link}>Ver propiedades</Link>
+            </li>
+            <li>
+                <Link to='/' className={NavbarCss.link}>Alquilar</Link>
+            </li>
 
-    if (name === '') {
-        menu = (
-            <>
-                <li>
-                    <Link to='/registro' className={NavbarCss.link}>Registrarse</Link>
-                </li>
-                <li>
-                    <Link to='/singin' className={NavbarCss.link}>SingIn</Link>
-                </li>
-                <li>
-                    <Link to='/propiedades' className={NavbarCss.link}>Ver propiedades</Link>
-                </li>
-                <li>
-                    <Link to='/' className={NavbarCss.link}>Alquilar</Link>
-                </li>
+        </>
+    )
 
-
-            </>
-
-
-
-        )
-    } else {
-        menu = (
-            <>
-                <li>
-                    <Link to='/propiedades' className={NavbarCss.link}>Ver propiedades</Link>
-                </li>
-                <li>
-                    <Link to='/agregar' className={NavbarCss.link}>Agregar propiedad</Link>
-                </li>
-                <li>
-                    <Link to='/favoritos' className={NavbarCss.link}>Favoritos</Link>
-                </li>
-                <li>
-                    <Link to='/' className={NavbarCss.link} onClick={cerrarSesion}>cerrar sesion</Link>
-                </li>
-            </>
-        )
-    }
 
 
 

@@ -14,6 +14,7 @@ const AgregarPropiedad = () => {
     const [price, setPrecio] = useState(0)
     const [toilet, setToilet] = useState(0)
     const [cocheras, setCocheras] = useState(0)
+    const [descripcion, setDescripcion] = useState('')
     const [imageUrl, setImagenUrl] = useState('')
     const [mensajeCreacion, setMensajeCreacion] = useState('')
     const [habilitadoBoton, setHabilitadoBoton] = useState(false)
@@ -48,6 +49,9 @@ const AgregarPropiedad = () => {
     const handleChangeCochera = (e) => {
         setCocheras(parseInt(e.target.value))
     }
+    const handleChangeDescripcion = (e) => {
+        setDescripcion(e.target.value)
+    }
     const handleChangeImagenUrl = (e) => {
         setImagenUrl(e.target.value)
 
@@ -56,7 +60,7 @@ const AgregarPropiedad = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:3009/api/propiedades', { livingPlace, tipoDeOperacion, direccion, ubicacion, ambientes, superficie, price, toilet, cocheras, imageUrl })
+        axios.post('http://localhost:3009/api/propiedades', { livingPlace, tipoDeOperacion, direccion, ubicacion, ambientes, superficie, price, toilet, cocheras, descripcion, imageUrl })
             .then((x) => {
                 setMensajeCreacion(x.data)
             })
@@ -130,6 +134,10 @@ const AgregarPropiedad = () => {
                             <label htmlFor="cocheras">
                                 <span className={estilo.bloque}>Cantidad de Cocheras</span>
                                 <input type="text" name="cocheras" onChange={handleChangeCochera} />
+                            </label>
+                            <label htmlFor="Descripcion">
+                                <span className={estilo.bloque}>Descripcion</span>
+                                <input type="text" name="Descripcion" onChange={handleChangeDescripcion} />
                             </label>
                             <label htmlFor="ImageUrl">
                                 <span className={estilo.bloque}>ImageUrl</span>

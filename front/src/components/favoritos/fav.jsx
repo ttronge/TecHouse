@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core';
+import { useStyles } from './favStyle'
 
 
 
@@ -20,8 +21,7 @@ const Fav = () => {
     const user = localStorage.getItem('user')
     const usuario = JSON.parse(user)
     const [casaDepto, setCasaDepto] = useState([])
-
-
+    const classes = useStyles();
 
     useEffect(() => {
         axios.get(`http://localhost:3009/api/users/favorite/${usuario._id}`)
@@ -30,6 +30,9 @@ const Fav = () => {
             })
     }, [])
 
+
+
+
     const verPropiedad = () => {
         return axios.get(`http://localhost:3009/api/users/favorite/${usuario._id}`)
             .then((x) => {
@@ -37,8 +40,9 @@ const Fav = () => {
             })
 
     }
-    const DeleteFav = () => {
-        axios.post(`http://localhost:3009/api/users/favoriteDelete/${usuario._id}`, { "propiedadId": casaDepto._id })
+    const DeleteFav = (x) => {
+        console.log(typeof x);
+        axios.post(`http://localhost:3009/api/users/favoriteDelete/${usuario._id}`, { "propiedadId": x })
             .then(() => {
                 return verPropiedad()
             })
@@ -46,17 +50,10 @@ const Fav = () => {
 
 
 
-    const useStyles = makeStyles({
-        root: {
-            maxWidth: 345,
-        },
-        media: {
-            height: 140,
-        },
-    });
 
 
-    const classes = useStyles();
+
+
     if (casaDepto.length > 0) {
         return (
             <div>
@@ -66,9 +63,13 @@ const Fav = () => {
                     <div className={estilo.container}>
                         {
                             casaDepto.length > 0 &&
-                            casaDepto.map(propiedad => {
+                            casaDepto.map((propiedad, index) => {
+
                                 return (
-                                    < div key={propiedad._id}  >
+
+                                    console.log(propiedad),
+
+                                    < div key={propiedad.index}  >
                                         <Card className={classes.root}>
                                             <CardActionArea>
                                                 <CardMedia
@@ -93,7 +94,7 @@ const Fav = () => {
                                                 <Link to={`/propiedad/${propiedad._id}`} className={estilo.link}> Ver mas</Link>
                                             </Button>
 
-                                            <Button onClick={DeleteFav}  >
+                                            <Button onClick={() => DeleteFav(index)}  >
                                                 🗑️
                                                 </Button>
                                         </Card>

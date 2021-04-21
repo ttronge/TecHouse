@@ -15,7 +15,7 @@ const SingleProperty = ({ propiedad }) => {
     const local = localStorage.getItem('user')
     const dataFinal = JSON.parse(local)
 
-
+    // comparar id del back con el front xd
     useEffect(() => {
         axios.get(`http://localhost:3009/api/propiedades/${propiedad}`)
             .then((x) => {
@@ -42,6 +42,8 @@ const SingleProperty = ({ propiedad }) => {
             setHabilitadoBoton(true)
         }
     }
+    console.log(dataFinal.favoritos.includes(propiedadUnica._id));
+    console.log("fav  :", dataFinal.favoritos, "id :", propiedadUnica._id);
 
     //  localStorage.setItem('favoritos', JSON.stringify(favoritos))
     return (
@@ -56,7 +58,7 @@ const SingleProperty = ({ propiedad }) => {
                 <p>Tipo de localidad: {propiedadUnica.livingPlace}</p>
                 <p>Direccion: {propiedadUnica.direccion}</p>
                 <p>Precio: {propiedadUnica.price}</p>
-                {<Button onClick={addFav} disabled={habilitadoBoton}>
+                {<Button onClick={addFav} disabled={dataFinal.favoritos.includes(propiedadUnica._id)}>
                     añadir a favoritos  ❤️
                 </Button>}
                 {mensajeFav ? <p>{mensajeFav}</p> : <p> {errorMensaje} </p>}
@@ -64,7 +66,7 @@ const SingleProperty = ({ propiedad }) => {
 
 
 
-        </div>
+        </div >
     )
 }
 export default SingleProperty
