@@ -42,27 +42,6 @@ app.listen(3009, () => {
 
 
 
-/* //User.deleteMany()
-    .then((x) => {
-        //ASI HAGO UN FORCE TRUE
-        console.log(x)
-    })
-User.deleteMany()
-    .then((x) => {
-        //ASI HAGO UN FORCE TRUE
-        console.log(x)
-    })
-Propiedades.deleteMany({})
-    .then((x) => {
-        /// ASI HAGO UN FORCE TRUE
-        console.log(x)
-    })
-Propiedades.deleteMany({})
-    .then((x) => {
-        /// ASI HAGO UN FORCE TRUE
-        console.log(x)
-    })
-    */
 
 
 
