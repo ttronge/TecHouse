@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 const SingleProperty = ({ propiedad }) => {
 
     const [propiedadUnica, setPropiedadUnica] = useState([])
-    const [favoritosDeUser, setFavoritosDeUser] = useState([])
+
     const [mensajeFav, setMensajeFav] = useState('')
     const [favoritos, setFavoritos] = useState([])
     const [errorMensaje, setErrorMensaje] = useState('')
@@ -26,12 +26,7 @@ const SingleProperty = ({ propiedad }) => {
             })
     }, [])
 
-    useEffect(() => {
-        axios.get(`http://localhost:3009/api/users/favorite/${dataFinal._id}`)
-            .then((x) => {
-                setFavoritosDeUser(x.data)
-            })
-    }, [])
+
 
 
     const EliminarPropiedad = () => {
@@ -57,18 +52,18 @@ const SingleProperty = ({ propiedad }) => {
 
         }
     }
-
-
     let menu
-    if (dataFinal.admin === true) {
-        menu = (
-            <Button onClick={EliminarPropiedad} >Eliminar Propiedad </Button>
-        )
-    } else {
-        menu = (
-            null
-        )
+
+    if (dataFinal) {
+        if (dataFinal.admin) {
+            menu = (
+                <Button onClick={EliminarPropiedad} >Eliminar Propiedad </Button>
+            )
+        }
     }
+
+
+
     if (redireccion) {
         return <Redirect to='/propiedades' />;
     }
@@ -92,9 +87,9 @@ const SingleProperty = ({ propiedad }) => {
                 <p>Cochera: {propiedadUnica.cocheras}</p>
                 <p>Precio: {propiedadUnica.price}</p>
                 <p>{propiedadUnica.descripcion}</p>
-                {<Button onClick={addFav} disabled={dataFinal.favoritos.includes(propiedadUnica._id)}>
+                {dataFinal ? <Button onClick={addFav} disabled={dataFinal.favoritos.includes(propiedadUnica._id)}>
                     añadir a favoritos  ❤️
-                </Button>}
+                </Button> : null}
                 {mensajeFav ? <p>{mensajeFav}</p> : <p> {errorMensaje} </p>}
                 {menu}
             </div>

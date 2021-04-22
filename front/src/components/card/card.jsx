@@ -73,7 +73,7 @@ export default function Carta() {
                                         <Button>
                                             <Link to={`/propiedad/${propiedad._id}`} className={estilo.link}> Ver mas</Link>
                                         </Button>
-                                        <Button onClick={() => {
+                                        {dataFinal ? <Button onClick={() => {
                                             axios.post(`http://localhost:3009/api/users/favorite/${dataFinal._id}`, { "propiedadId": propiedad._id })
                                                 .then((x) => {
 
@@ -81,7 +81,8 @@ export default function Carta() {
                                                 })
                                         }}>
                                             ❤️
-                                                </Button>
+                                                </Button> : null}
+
 
                                     </Card>
                                 </div>

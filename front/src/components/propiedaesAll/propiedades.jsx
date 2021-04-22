@@ -214,14 +214,15 @@ const Propiedades = () => {
                                                 <Button>
                                                     <Link to={`/propiedad/${propiedad._id}`} className={estilo.link}> Ver mas</Link>
                                                 </Button>
-                                                <Button onClick={() => {
+                                                {dataFinal ? <Button onClick={() => {
                                                     axios.post(`http://localhost:3009/api/users/favorite/${dataFinal._id}`, { "propiedadId": propiedad._id })
                                                         .then((x) => {
+
                                                             alert('Se ha agredado a tus favoritos correctamente')
                                                         })
                                                 }}>
                                                     ❤️
-                                                </Button>
+                                                </Button> : null}
 
 
                                             </CardContent>
