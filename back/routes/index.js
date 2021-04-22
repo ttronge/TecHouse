@@ -22,7 +22,7 @@ router.use('/private', private)
 router.use('/cookie', cookie)
 router.use('/logout', logout)
 
-//router.use('/registro', MejorandoRegisterR)
+
 
 
 
