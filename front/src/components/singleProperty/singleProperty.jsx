@@ -18,7 +18,7 @@ const SingleProperty = ({ propiedad }) => {
     const local = localStorage.getItem('user')
     const dataFinal = JSON.parse(local)
 
-    // comparar id del back con el front xd
+
     useEffect(() => {
         axios.get(`http://localhost:3009/api/propiedades/${propiedad}`)
             .then((x) => {
@@ -29,9 +29,11 @@ const SingleProperty = ({ propiedad }) => {
     useEffect(() => {
         axios.get(`http://localhost:3009/api/users/favorite/${dataFinal._id}`)
             .then((x) => {
-                setFavoritosDeUser(x.data.favoritos)
+                setFavoritosDeUser(x.data)
             })
     }, [])
+
+    console.log("----------------------------->", favoritosDeUser);
     const EliminarPropiedad = () => {
         axios.delete(`http://localhost:3009/api/propiedades/${propiedadUnica._id}`)
             .then((x) => {
@@ -46,7 +48,7 @@ const SingleProperty = ({ propiedad }) => {
             axios.post(`http://localhost:3009/api/users/favorite/${dataFinal._id}`, { "propiedadId": propiedadUnica._id })
                 .then((x) => {
 
-                    //   setHabilitadoBoton(true)
+
                     setMensajeFav(x.data.message)
                     setFavoritos(x.data.depto.favoritos)
 
@@ -54,13 +56,11 @@ const SingleProperty = ({ propiedad }) => {
         }
         else {
             setErrorMensaje('Debe iniciar sesion para hacer esta acción');
-            // setHabilitadoBoton(true)
+
         }
     }
-    console.log(dataFinal.admin);
-    //console.log("fav  :", dataFinal.favoritos, "id :", propiedadUnica._id);
 
-    //  localStorage.setItem('favoritos', JSON.stringify(favoritos))
+
     let menu
     if (dataFinal.admin === true) {
         menu = (
@@ -70,6 +70,7 @@ const SingleProperty = ({ propiedad }) => {
     if (redireccion) {
         return <Redirect to='/propiedades' />;
     }
+
     return (
 
         <div>
