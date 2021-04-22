@@ -28,7 +28,6 @@ const SingleProperty = ({ propiedad }) => {
 
 
 
-
     const EliminarPropiedad = () => {
         axios.delete(`http://localhost:3009/api/propiedades/${propiedadUnica._id}`)
             .then((x) => {
