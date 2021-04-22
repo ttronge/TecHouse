@@ -86,7 +86,7 @@ const departamento6 = {
     toilet: 1,
     cocheras: 1,
     descripcion: "Departamento de 3 ambientes con balcón. Toilette. Cocina independiente. 2 dormitorios. Baño completo. Espacio de guardado. Las unidades funcionales estarán preparadas para la instalación de aire acondicionado. Sistema de agua corriente central. La unidad tendrá piso de porcelanato.",
-    imageUrl: "https://imgar.zonapropcdn.com/avisos/1/00/47/00/06/03/1200x1200/1761035320.jpg"
+    imageUrl: "https://mapaprop-image.s3.amazonaws.com/photos/3272/196542/1998005.jpg"
 
 };
 const departamento7 = {

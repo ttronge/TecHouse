@@ -38,7 +38,8 @@ const authController = {
             name: req.body.name,
             lastname: req.body.lastname,
             email: req.body.email,
-            password: hasheoPassword
+            password: hasheoPassword,
+            admin: req.body.admin
         })
         const result = await user.save()
         const { password, ...data } = await result.toJSON()

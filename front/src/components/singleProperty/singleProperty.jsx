@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import Navbar from '../navbar/Navbar'
 import estilos from './singleProperty.module.css'
@@ -8,10 +9,12 @@ import Button from '@material-ui/core/Button';
 const SingleProperty = ({ propiedad }) => {
 
     const [propiedadUnica, setPropiedadUnica] = useState([])
+    const [favoritosDeUser, setFavoritosDeUser] = useState([])
     const [mensajeFav, setMensajeFav] = useState('')
     const [favoritos, setFavoritos] = useState([])
     const [errorMensaje, setErrorMensaje] = useState('')
-    const [habilitadoBoton, setHabilitadoBoton] = useState(false)
+    const [elimado, setElimando] = useState('')
+    const [redireccion, setRedireccion] = useState(false)
     const local = localStorage.getItem('user')
     const dataFinal = JSON.parse(local)
 
@@ -23,15 +26,27 @@ const SingleProperty = ({ propiedad }) => {
             })
     }, [])
 
-
-
+    useEffect(() => {
+        axios.get(`http://localhost:3009/api/users/favorite/${dataFinal._id}`)
+            .then((x) => {
+                setFavoritosDeUser(x.data.favoritos)
+            })
+    }, [])
+    const EliminarPropiedad = () => {
+        axios.delete(`http://localhost:3009/api/propiedades/${propiedadUnica._id}`)
+            .then((x) => {
+                setElimando(x.data)
+                setRedireccion(true)
+                alert('Se ha eliminado correctamente')
+            })
+    }
 
     const addFav = () => {
         if (dataFinal) {
             axios.post(`http://localhost:3009/api/users/favorite/${dataFinal._id}`, { "propiedadId": propiedadUnica._id })
                 .then((x) => {
 
-                    setHabilitadoBoton(true)
+                    //   setHabilitadoBoton(true)
                     setMensajeFav(x.data.message)
                     setFavoritos(x.data.depto.favoritos)
 
@@ -39,14 +54,24 @@ const SingleProperty = ({ propiedad }) => {
         }
         else {
             setErrorMensaje('Debe iniciar sesion para hacer esta acción');
-            setHabilitadoBoton(true)
+            // setHabilitadoBoton(true)
         }
     }
-    console.log(dataFinal.favoritos.includes(propiedadUnica._id));
-    console.log("fav  :", dataFinal.favoritos, "id :", propiedadUnica._id);
+    console.log(dataFinal.admin);
+    //console.log("fav  :", dataFinal.favoritos, "id :", propiedadUnica._id);
 
     //  localStorage.setItem('favoritos', JSON.stringify(favoritos))
+    let menu
+    if (dataFinal.admin === true) {
+        menu = (
+            <Button onClick={EliminarPropiedad} >Eliminar Propiedad </Button>
+        )
+    }
+    if (redireccion) {
+        return <Redirect to='/propiedades' />;
+    }
     return (
+
         <div>
             <Navbar />
             <div className={estilos.container}>
@@ -62,6 +87,8 @@ const SingleProperty = ({ propiedad }) => {
                     añadir a favoritos  ❤️
                 </Button>}
                 {mensajeFav ? <p>{mensajeFav}</p> : <p> {errorMensaje} </p>}
+                {menu}
+                {/*  {dataFinal.admin ? <Button onClick={EliminarPropiedad} >Eliminar Propiedad </Button> : null} */}
             </div>
 
 

@@ -96,17 +96,36 @@ const Propiedades = () => {
                 setPropiedades(x.data)
             })
     }
+    const OrdenMayorAMenor = () => {
+        axios.post("http://localhost:3009/api/propiedades/ordenarmayoramenor")
+            .then((x) => {
+                setPropiedades(x.data)
+            })
+    }
+    const ordenarMenorAMayor = () => {
+        axios.post("http://localhost:3009/api/propiedades/ordenarmenoramayor")
+            .then((x) => {
+                setPropiedades(x.data)
+            })
+    }
 
     return (
 
         < div >
-            {console.log(tipoDeOperacion)}
             <Navbar />
             <header>
                 <div className={estilo.containerFlex} >
-                    <Button onClick={reset} className={estilo.boton}>
+                    <Button onClick={OrdenMayorAMenor} className={estilo.btn}>
+                        Mayor a menor  precio
+                    </Button>
+                    <Button onClick={ordenarMenorAMayor} className={estilo.btn}>
+                        Menor a mayor  precio
+                    </Button>
+                    <Button onClick={reset} className={estilo.btn}>
                         Reset
                     </Button>
+
+
                     <form action="" onSubmit={handleSubmitZona} className={estilo.formZone}>
                         <div>
                             <label htmlFor="zona">

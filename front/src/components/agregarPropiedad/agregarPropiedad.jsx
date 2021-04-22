@@ -135,15 +135,19 @@ const AgregarPropiedad = () => {
                                 <span className={estilo.bloque}>Cantidad de Cocheras</span>
                                 <input type="text" name="cocheras" onChange={handleChangeCochera} />
                             </label>
-                            <label htmlFor="Descripcion">
-                                <span className={estilo.bloque}>Descripcion</span>
-                                <input type="text" name="Descripcion" onChange={handleChangeDescripcion} />
-                            </label>
+
                             <label htmlFor="ImageUrl">
                                 <span className={estilo.bloque}>ImageUrl</span>
                                 <input type="text" name="ImageUrl" onChange={handleChangeImagenUrl} />
                             </label>
                         </div>
+                        <div className={estilo.text}>
+                            <label htmlFor="Descripcion">
+                                <span className={estilo.bloqued}>Descripcion</span>
+                                <textarea type="text" name="Descripcion" onChange={handleChangeDescripcion} />
+                            </label>
+                        </div>
+
 
 
                         <div className={estilo.abajoDeForm}>

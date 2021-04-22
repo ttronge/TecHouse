@@ -23,7 +23,6 @@ app.use((error, req, res, next) => {
 })
 
 
-
 app.listen(3009, () => {
     console.log('run in port 3009');
 })
@@ -58,7 +57,11 @@ Propiedades.deleteMany({})
         /// ASI HAGO UN FORCE TRUE
         console.log(x)
     })
-
+Propiedades.deleteMany({})
+    .then((x) => {
+        /// ASI HAGO UN FORCE TRUE
+        console.log(x)
+    })
     */
 
 
