@@ -23,7 +23,9 @@ const Propiedades = () => {
     const [mayorPrecio, setMayorPrecio] = useState('')
     const [tipoDeOperacion, setTipoDeOperacion] = useState('')
     const classes = useStyles()
-    let msg
+    const local = localStorage.getItem('user')
+    const dataFinal = JSON.parse(local)
+
     useEffect(() => {
         axios.get('http://localhost:3009/api/propiedades')
             .then((x) => {
@@ -73,7 +75,7 @@ const Propiedades = () => {
     const filtrarZona = () => {
         axios.post('http://localhost:3009/api/propiedades/zona', { "zona": zona })
             .then((x) => {
-                console.log(x)
+
                 setPropiedades(x.data)
             })
     }
@@ -212,9 +214,15 @@ const Propiedades = () => {
                                                 <Button>
                                                     <Link to={`/propiedad/${propiedad._id}`} className={estilo.link}> Ver mas</Link>
                                                 </Button>
-                                                <Button>
+                                                <Button onClick={() => {
+                                                    axios.post(`http://localhost:3009/api/users/favorite/${dataFinal._id}`, { "propiedadId": propiedad._id })
+                                                        .then((x) => {
+                                                            alert('Se ha agredado a tus favoritos correctamente')
+                                                        })
+                                                }}>
                                                     ❤️
                                                 </Button>
+
 
                                             </CardContent>
                                         </CardActionArea>

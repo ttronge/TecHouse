@@ -38,9 +38,7 @@ const Navbar = ({ name }) => {
             <li>
                 <Link to='/propiedades' className={NavbarCss.link}>Ver propiedades</Link>
             </li>
-            <li>
-                <Link to='/' className={NavbarCss.link}>Alquilar</Link>
-            </li>
+
 
         </>
     )

@@ -33,7 +33,7 @@ const SingleProperty = ({ propiedad }) => {
             })
     }, [])
 
-    console.log("----------------------------->", favoritosDeUser);
+
     const EliminarPropiedad = () => {
         axios.delete(`http://localhost:3009/api/propiedades/${propiedadUnica._id}`)
             .then((x) => {
@@ -47,8 +47,6 @@ const SingleProperty = ({ propiedad }) => {
         if (dataFinal) {
             axios.post(`http://localhost:3009/api/users/favorite/${dataFinal._id}`, { "propiedadId": propiedadUnica._id })
                 .then((x) => {
-
-
                     setMensajeFav(x.data.message)
                     setFavoritos(x.data.depto.favoritos)
 
@@ -66,6 +64,10 @@ const SingleProperty = ({ propiedad }) => {
         menu = (
             <Button onClick={EliminarPropiedad} >Eliminar Propiedad </Button>
         )
+    } else {
+        menu = (
+            null
+        )
     }
     if (redireccion) {
         return <Redirect to='/propiedades' />;
@@ -80,16 +82,21 @@ const SingleProperty = ({ propiedad }) => {
                 <img className={estilos.imagen} src={propiedadUnica.imageUrl} alt="" />
             </div>
             <div className={estilos.textos}>
-                <p>Ubicacion: {propiedadUnica.location}</p>
                 <p>Tipo de localidad: {propiedadUnica.livingPlace}</p>
+                <p>Tipo de operacion: {propiedadUnica.tipoDeOperacion}</p>
                 <p>Direccion: {propiedadUnica.direccion}</p>
+                <p>Ubicacion: {propiedadUnica.location}</p>
+                <p>Ambientes: {propiedadUnica.ambientes}</p>
+                <p>Superfice en m2: {propiedadUnica.superficie} </p>
+                <p>Baños: {propiedadUnica.toilet}</p>
+                <p>Cochera: {propiedadUnica.cocheras}</p>
                 <p>Precio: {propiedadUnica.price}</p>
+                <p>{propiedadUnica.descripcion}</p>
                 {<Button onClick={addFav} disabled={dataFinal.favoritos.includes(propiedadUnica._id)}>
                     añadir a favoritos  ❤️
                 </Button>}
                 {mensajeFav ? <p>{mensajeFav}</p> : <p> {errorMensaje} </p>}
                 {menu}
-                {/*  {dataFinal.admin ? <Button onClick={EliminarPropiedad} >Eliminar Propiedad </Button> : null} */}
             </div>
 
 

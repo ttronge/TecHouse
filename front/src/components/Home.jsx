@@ -9,7 +9,7 @@ const Home = ({ name, user }) => {
   return (
     <div>
       <Navbar name={name} />
-      {name ? 'hi ' + name : 'no estas registrado'}
+
       <Card user={user} />
 
     </div>
